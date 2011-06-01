@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implementation of hook_form_ID_alter().
+ */
+function ding_wiki_form_node_access_page_alter(&$form, &$form_state) {
+  //Make Access control lists collapsed by default. They are seldom needed.
+  $form['nacl']['#collapsed'] = TRUE;
+}
+
+
+include_once('ding_wiki.features.inc');
