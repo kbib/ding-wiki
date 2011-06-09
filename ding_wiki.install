@@ -4,28 +4,8 @@
  * Implementation of hook_install().
  */
 function ding_wiki_install() {
-  // Create the wiki category vocabulary
-  db_query("INSERT INTO {vocabulary} (name, help, relations, hierarchy, multiple, required, tags, module, weight) VALUES
-    ('" . st('Wiki category') . "', '" . st('Pick a category for the wiki page') . "', 1, 0, 1, 0, 0, 'ding_wiki', 0)
-  ");
-
-  $vid = db_last_insert_id('vocabulary', 'vid');
-  
-  // Bind wiki pages to vocabularies
+  // Bind wiki pages to tag vocabulary
   db_query("INSERT INTO {vocabulary_node_types} (vid, type) VALUES
-    (2, 'wiki_page'),
-    (".$vid.", 'wiki_page')
+    (2, 'wiki_article')
   ");
-
-  //Store the vid for future reference:
-  variable_set('ding_wiki_wiki_category_vid', $vid);
-}
-
-/**
- * Implementation of hook_uninstall().
- */
-function ding_wiki_uninstall() {
-  if ($vid = db_result(db_query('SELECT vid FROM vocabulary WHERE module = "ding_wiki"'))) {
-    taxonomy_del_vocabulary($vid);
-  }
 }
