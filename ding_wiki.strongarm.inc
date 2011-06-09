@@ -249,18 +249,17 @@ function ding_wiki_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_access_settings';
   $strongarm->value = array(
-    'per_node' => '1',
+    'per_node' => 1,
     'priority' => '10',
     'view' => array(
-      0 => '1',
-      1 => '2',
+      1 => 1,
+      2 => 2,
     ),
     'update' => array(
-      0 => '2',
+      1 => 1,
+      2 => 2,
     ),
-    'delete' => array(
-      0 => '2',
-    ),
+    'delete' => array(),
   );
 
   $export['node_access_settings'] = $strongarm;
@@ -289,6 +288,7 @@ function ding_wiki_strongarm() {
       5 => 5,
     ),
     'update' => array(
+      1 => 1,
       2 => 2,
       3 => 3,
       4 => 4,
