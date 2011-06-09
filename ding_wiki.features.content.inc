@@ -80,7 +80,7 @@ function ding_wiki_content_default_fields() {
       'insert_class' => '',
       'insert_width' => '',
       'label' => 'Billeder',
-      'weight' => '-2',
+      'weight' => 0,
       'description' => '',
       'type' => 'imagefield_widget',
       'module' => 'imagefield',
@@ -150,11 +150,136 @@ function ding_wiki_content_default_fields() {
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Kilde materialer',
-      'weight' => '-1',
+      'label' => 'Links',
+      'weight' => '1',
       'description' => '',
       'type' => 'link',
       'module' => 'link',
+    ),
+  );
+
+  // Exported field: field_teaser
+  $fields['wiki_page-field_teaser'] = array(
+    'field_name' => 'field_teaser',
+    'type_name' => 'wiki_page',
+    'display_settings' => array(
+      'weight' => '-1',
+      'parent' => '',
+      'label' => array(
+        'format' => 'hidden',
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => '3',
+      'size' => 60,
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_teaser][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Beskrivelse',
+      'weight' => '-3',
+      'description' => '',
+      'type' => 'text_textarea',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_text_refs
+  $fields['wiki_page-field_text_refs'] = array(
+    'field_name' => 'field_text_refs',
+    'type_name' => 'wiki_page',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '1',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => '2',
+      'size' => 60,
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_text_refs][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Kildelitteratur',
+      'weight' => '2',
+      'description' => '',
+      'type' => 'text_textarea',
+      'module' => 'text',
     ),
   );
 
@@ -200,7 +325,7 @@ function ding_wiki_content_default_fields() {
     'active' => '1',
     'widget' => array(
       'label' => 'Materialer',
-      'weight' => 0,
+      'weight' => '3',
       'description' => '',
       'type' => 'ting_reference_default',
       'module' => 'ting_reference',
@@ -209,8 +334,10 @@ function ding_wiki_content_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Beskrivelse');
   t('Billeder');
-  t('Kilde materialer');
+  t('Kildelitteratur');
+  t('Links');
   t('Materialer');
 
   return $fields;

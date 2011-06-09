@@ -104,14 +104,15 @@ function ding_wiki_strongarm() {
   $strongarm->name = 'content_extra_weights_wiki_page';
   $strongarm->value = array(
     'title' => '-5',
-    'body_field' => '-3',
-    'revision_information' => '2',
-    'author' => '1',
-    'options' => '3',
-    'comment_settings' => '5',
+    'body_field' => '-2',
+    'revision_information' => '5',
+    'author' => '4',
+    'options' => '6',
+    'comment_settings' => '8',
     'menu' => '-4',
-    'path' => '6',
-    'path_redirect' => '4',
+    'taxonomy' => '-1',
+    'path' => '9',
+    'path_redirect' => '7',
   );
 
   $export['content_extra_weights_wiki_page'] = $strongarm;
