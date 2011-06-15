@@ -325,7 +325,7 @@ function ding_wiki_default_page_manager_handlers() {
     );
     $pane->cache = array();
     $pane->style = array(
-      'style' => 'ding_box',
+      'style' => 'default',
       'settings' => NULL,
     );
     $pane->css = array();
@@ -335,6 +335,27 @@ function ding_wiki_default_page_manager_handlers() {
     $display->panels['right'][0] = 'new-9';
     $pane = new stdClass;
     $pane->pid = 'new-10';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'wiki_list-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Recent wiki pages',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+      'style' => 'ding_box',
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-10'] = $pane;
+    $display->panels['right'][1] = 'new-10';
+    $pane = new stdClass;
+    $pane->pid = 'new-11';
     $pane->panel = 'right';
     $pane->type = 'relevant';
     $pane->subtype = 'relevant_campaigns';
@@ -354,9 +375,9 @@ function ding_wiki_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-10'] = $pane;
-    $display->panels['right'][1] = 'new-10';
+    $pane->position = 2;
+    $display->content['new-11'] = $pane;
+    $display->panels['right'][2] = 'new-11';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
