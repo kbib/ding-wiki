@@ -20,6 +20,61 @@ function ding_wiki_menu() {
 }
 
 /**
+ * Implementation of hook_theme().
+ */
+function ding_wiki_theme() {
+  $file = drupal_get_path('module', 'ding_wiki') . '/ding_wiki.theme.inc';
+  
+  return array(
+    'ding_wiki_formatter_text' => array(
+      'arguments' => array('element' => NULL),
+      'template' => 'templates/ting_reference_text',
+      'file'	=> $file,
+    ),
+    'ding_wiki_formatter_mixed' => array(
+      'arguments' => array('element' => NULL),
+      'file'	=> $file,
+    ),
+  );
+}
+
+
+/**
+ * Implementation of hook_theme_registry_alter.
+ */
+function ding_wiki_theme_registry_alter(&$theme_registry) {
+  
+  //We provide our own node template for wiki pages so look here as well
+  $theme_path = drupal_get_path('module', 'ding_wiki') . '/templates';
+  $theme_hooks = array('node');
+  foreach ($theme_hooks as $hook) {
+    $theme_registry[$hook]['theme paths'][] = $theme_path;
+  }
+}
+
+function ding_wiki_preprocess_node() {
+  drupal_add_css(drupal_get_path('module', 'ding_wiki') . '/css/ding_wiki.css');
+}
+
+/**
+ * Implementation of hook_field_formatter_info().
+ */
+function ding_wiki_field_formatter_info() {
+  return array(
+    'text' => array(
+      'label' => t('Simple text'),
+      'field types' => array('ting_reference'),
+      'multiple values' => CONTENT_HANDLE_CORE,
+    ),
+    'mixed' => array(
+      'label' => t('Combines image and text formatters for multiple values'),
+      'field types' => array('ting_reference'),
+      'multiple values' => CONTENT_HANDLE_CORE,
+    ),
+  );
+}
+
+/**
  * Implementation of hook_form_ID_alter().
  */
 function ding_wiki_form_node_access_page_alter(&$form, &$form_state) {

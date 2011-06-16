@@ -11,7 +11,7 @@ function ding_wiki_content_default_fields() {
     'field_name' => 'field_content_images',
     'type_name' => 'wiki_page',
     'display_settings' => array(
-      'weight' => '-3',
+      'weight' => 0,
       'parent' => '',
       'label' => array(
         'format' => 'hidden',
@@ -92,7 +92,7 @@ function ding_wiki_content_default_fields() {
     'field_name' => 'field_links',
     'type_name' => 'wiki_page',
     'display_settings' => array(
-      'weight' => 0,
+      'weight' => '1',
       'parent' => '',
       'label' => array(
         'format' => 'above',
@@ -163,7 +163,7 @@ function ding_wiki_content_default_fields() {
     'field_name' => 'field_teaser',
     'type_name' => 'wiki_page',
     'display_settings' => array(
-      'weight' => '-1',
+      'weight' => '-3',
       'parent' => '',
       'label' => array(
         'format' => 'hidden',
@@ -226,9 +226,10 @@ function ding_wiki_content_default_fields() {
     'field_name' => 'field_text_refs',
     'type_name' => 'wiki_page',
     'display_settings' => array(
+      'weight' => '2',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -288,16 +289,17 @@ function ding_wiki_content_default_fields() {
     'field_name' => 'field_ting_refs',
     'type_name' => 'wiki_page',
     'display_settings' => array(
+      'weight' => '3',
+      'parent' => '',
       'label' => array(
-        'format' => 'above',
-        'exclude' => 0,
+        'format' => 'hidden',
       ),
       'teaser' => array(
-        'format' => 'default',
+        'format' => 'hidden',
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'default',
+        'format' => 'hidden',
         'exclude' => 0,
       ),
       '4' => array(

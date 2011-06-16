@@ -223,7 +223,7 @@ function ding_wiki_default_page_manager_handlers() {
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'normal',
-      'formatter' => 'default',
+      'formatter' => 'mixed',
       'context' => 'argument_nid_1',
       'override_title' => 1,
       'override_title_text' => 'Recommended reading',

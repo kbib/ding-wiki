@@ -1,0 +1,12 @@
+/* We actually use tabs here so hide all displays except the panels pane one */
+.node-type-wiki-page .tabs { display: none; }
+.node-type-wiki-page  .pane-page_tabs .tabs { display: block; }
+
+.node-type-wiki-page #comment-form .form-textarea { width: auto; }
+
+.node-type-wiki-page .pane-node_terms .links li { border-left: 1px solid; }
+.node-type-wiki-page .pane-node_terms .links .first { border-left: 0px none; }  
+
+.node-wiki_page .content .item-list { margin-left: 0; }
+.node-wiki_page .content .field h3 { font-size: 100%; font-weight: bold; line-height: normal; }
+
