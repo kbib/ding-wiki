@@ -471,7 +471,7 @@ function ding_wiki_default_page_manager_pages() {
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
-    $pane->subtype = 'wiki_list-panel_pane_1';
+    $pane->subtype = 'wiki_revisions_list-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -479,7 +479,7 @@ function ding_wiki_default_page_manager_pages() {
         0 => 'argument_uid_1',
       ),
       'override_title' => 1,
-      'override_title_text' => 'Your wiki pages',
+      'override_title_text' => 'Your wiki contributions',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -492,26 +492,6 @@ function ding_wiki_default_page_manager_pages() {
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
     $pane->pid = 'new-2';
-    $pane->panel = 'left';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'wiki_comments-panel_pane_1';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Your wiki comments',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-2'] = $pane;
-    $display->panels['left'][1] = 'new-2';
-    $pane = new stdClass;
-    $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'relevant';
     $pane->subtype = 'relevant_campaigns';
@@ -532,8 +512,8 @@ function ding_wiki_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-3'] = $pane;
-    $display->panels['right'][0] = 'new-3';
+    $display->content['new-2'] = $pane;
+    $display->panels['right'][0] = 'new-2';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
