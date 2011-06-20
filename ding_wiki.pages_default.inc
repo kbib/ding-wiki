@@ -14,7 +14,7 @@ function ding_wiki_default_page_manager_handlers() {
   $handler->handler = 'http_response';
   $handler->weight = 0;
   $handler->conf = array(
-    'title' => 'HTTP response code',
+    'title' => 'Wiki page redirect to login',
     'contexts' => array(
       0 => array(
         'name' => 'token',
