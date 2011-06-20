@@ -14,6 +14,29 @@ function ding_wiki_ctools_plugin_api() {
 }
 
 /**
+ * Implementation of hook_imagecache_default_presets().
+ */
+function ding_wiki_imagecache_default_presets() {
+  $items = array(
+    'ding_wiki_thumbnail' => array(
+      'presetname' => 'ding_wiki_thumbnail',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale_and_crop',
+          'data' => array(
+            'width' => '118',
+            'height' => '88',
+          ),
+        ),
+      ),
+    ),
+  );
+  return $items;
+}
+
+/**
  * Implementation of hook_node_info().
  */
 function ding_wiki_node_info() {

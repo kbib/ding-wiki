@@ -10,3 +10,23 @@
 .node-wiki_page .content .item-list { margin-left: 0; }
 .node-wiki_page .content .field h3 { font-size: 100%; font-weight: bold; line-height: normal; }
 
+.node-wiki_page .field-wiki-images .more { margin: 5px 0 30px; text-align: right; }
+
+.field-wiki-images .jcarousel-container { background-color: #ebebeb; padding: 5px 15px; }
+.field-wiki-images .jcarousel-container .jcarousel-item { width: 138px; height: 120px; margin: 0; padding: 0; list-style: none outside; }
+.field-wiki-images .jcarousel-container .jcarousel-item > * { display: block; padding: 0 10px; }
+.field-wiki-images .jcarousel-container .jcarousel-item > > * { display: block; margin: 0; }
+
+.field-wiki-images .jcarousel-next-horizontal{position: absolute; top: 45px; right: -17px; width: 35px; height: 35px; cursor: pointer; background: transparent url(../img/sprite-buttons.png) no-repeat 0 -35px;}
+  .field-wiki-images .jcarousel-next-horizontal:hover {background-position: -35px -35px;}
+  .field-wiki-images .jcarousel-next-horizontal:active {background-position: -70px -35px;}
+  .field-wiki-images .jcarousel-next-disabled-horizontal,
+  .field-wiki-images .jcarousel-next-disabled-horizontal:hover,
+  .field-wiki-images .jcarousel-next-disabled-horizontal:active {cursor: default; background-position: -105px -35px;}
+
+.field-wiki-images .jcarousel-prev-horizontal {position: absolute; top: 45px; left: -17px; width: 35px; height: 35px; cursor: pointer; background: transparent url(../img/sprite-buttons.png) no-repeat 0 0;}
+  .field-wiki-images .jcarousel-prev-horizontal:hover {background-position: -35px 0;}
+  .field-wiki-images .jcarousel-prev-horizontal:active {background-position: -70px 0;}
+  .field-wiki-images .jcarousel-prev-disabled-horizontal,
+  .field-wiki-images .jcarousel-prev-disabled-horizontal:hover,
+  .field-wiki-images .jcarousel-prev-disabled-horizontal:active {cursor: default; background-position: -105px 0;}
