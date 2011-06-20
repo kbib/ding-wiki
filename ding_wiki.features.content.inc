@@ -11,10 +11,10 @@ function ding_wiki_content_default_fields() {
     'field_name' => 'field_links',
     'type_name' => 'wiki_page',
     'display_settings' => array(
-      'weight' => '1',
+      'weight' => 0,
       'parent' => '',
       'label' => array(
-        'format' => 'hidden',
+        'format' => 'above',
       ),
       'teaser' => array(
         'format' => 'hidden',
@@ -70,7 +70,7 @@ function ding_wiki_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Links',
-      'weight' => '1',
+      'weight' => 0,
       'description' => '',
       'type' => 'link',
       'module' => 'link',
@@ -145,10 +145,10 @@ function ding_wiki_content_default_fields() {
     'field_name' => 'field_text_refs',
     'type_name' => 'wiki_page',
     'display_settings' => array(
-      'weight' => '2',
+      'weight' => '1',
       'parent' => '',
       'label' => array(
-        'format' => 'hidden',
+        'format' => 'above',
       ),
       'teaser' => array(
         'format' => 'hidden',
@@ -196,7 +196,7 @@ function ding_wiki_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Kildelitteratur',
-      'weight' => '2',
+      'weight' => '1',
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -208,10 +208,10 @@ function ding_wiki_content_default_fields() {
     'field_name' => 'field_ting_refs',
     'type_name' => 'wiki_page',
     'display_settings' => array(
-      'weight' => '3',
+      'weight' => '2',
       'parent' => '',
       'label' => array(
-        'format' => 'hidden',
+        'format' => 'above',
       ),
       'teaser' => array(
         'format' => 'hidden',
@@ -246,7 +246,7 @@ function ding_wiki_content_default_fields() {
     'active' => '1',
     'widget' => array(
       'label' => 'Materialer',
-      'weight' => '3',
+      'weight' => '2',
       'description' => '',
       'type' => 'ting_reference_default',
       'module' => 'ting_reference',
