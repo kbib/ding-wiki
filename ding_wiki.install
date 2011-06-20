@@ -6,6 +6,6 @@
 function ding_wiki_install() {
   // Bind wiki pages to tag vocabulary
   db_query("INSERT INTO {vocabulary_node_types} (vid, type) VALUES
-    (2, 'wiki_article')
+    (2, 'wiki_page')
   ");
 }
