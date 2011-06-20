@@ -292,7 +292,7 @@ function ding_wiki_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'markup' => 'h2',
+      'markup' => 'h1',
       'class' => '',
       'id' => '',
       'override_title' => 1,

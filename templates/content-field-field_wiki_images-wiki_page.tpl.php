@@ -30,7 +30,7 @@
 <div class="field <?php print $field_name_css ?>">
 
   <?php if ($label_display == 'above') : ?>
-    <h3><?php print t($label) ?></h3>
+    <h2><?php print t($label) ?></h2>
   <?php endif;?>
 
   <?php foreach ($items as $delta => &$item) :
