@@ -1420,7 +1420,51 @@ function ding_wiki_views_default_views() {
       'views_groupby_sortby_direction' => 'desc',
     ),
   ));
+  $handler->override_option('filters', array(
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'wiki_page' => 'wiki_page',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'vid',
+    ),
+    'vid' => array(
+      'operator' => 'in',
+      'value' => array(
+        '2' => '2',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'vid',
+      'table' => 'term_data',
+      'field' => 'vid',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('distinct', 0);
+  $handler->override_option('row_options', array(
+    'inline' => array(
+      'name' => 'name',
+    ),
+    'separator' => '',
+    'hide_empty' => 0,
+  ));
   $handler->override_option('pane_title', 'Top wiki tags');
   $handler->override_option('pane_description', '');
   $handler->override_option('pane_category', array(
@@ -1429,7 +1473,7 @@ function ding_wiki_views_default_views() {
   ));
   $handler->override_option('allow', array(
     'use_pager' => 0,
-    'items_per_page' => 0,
+    'items_per_page' => 'items_per_page',
     'offset' => 0,
     'link_to_view' => 0,
     'more_link' => 0,

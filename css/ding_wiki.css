@@ -4,9 +4,6 @@
 
 .node-type-wiki-page #comment-form .form-textarea { width: auto; }
 
-.node-type-wiki-page .pane-node_terms .links li { border-left: 1px solid; }
-.node-type-wiki-page .pane-node_terms .links .first { border-left: 0px none; }  
-
 .node-wiki_page .content .item-list { margin-left: 0; }
 .node-wiki_page .content .field h3 { font-size: 100%; font-weight: bold; line-height: normal; }
 
@@ -31,6 +28,11 @@
   .field-wiki-images .jcarousel-prev-disabled-horizontal,
   .field-wiki-images .jcarousel-prev-disabled-horizontal:hover,
   .field-wiki-images .jcarousel-prev-disabled-horizontal:active {cursor: default; background-position: -105px 0;}
+
+/* Wiki terms */
+.ding-wiki-terms-pane li { display: inline; margin: 0px 0px 0px 10px; padding: 0px 0px 0px 10px; list-style-type: none; border-left: 1px solid; }
+.ding-wiki-terms-pane .first,
+.ding-wiki-terms-pane .views-row-first { border-left: 0px none; }  
 
 /* Wiki page create/edit forms */
 #ding-wiki-page-form .pane-form .form-item { padding: 9px; margin: 0 0 10px; border: 1px solid #DDD; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }

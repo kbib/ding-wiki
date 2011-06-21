@@ -43,8 +43,14 @@
     print (sizeof($items) > 1) ? theme('item_list', $items) : array_pop($items);
   ?>
 
+  <?php if (!$page) : ?>
+    <div class="more">
+     <?php print l(t('See the wiki page'), 'node/' . $node->nid) ?>  
+    </div>
+  <?php elseif (false) : ?>
   <div class="more">
     <?php print l(t('See all images in the gallery'), 'node/' . $node->nid . '/wiki-gallery') ?>
   </div>
+  <?php endif; ?>
 </div>
 <?php endif; ?>

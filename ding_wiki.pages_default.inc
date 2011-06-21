@@ -489,7 +489,10 @@ function ding_wiki_default_page_manager_handlers() {
       'settings' => NULL,
       'style' => 'ding_box',
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'ding-wiki-terms-pane',
+    );
     $pane->extras = array();
     $pane->position = 4;
     $display->content['new-6'] = $pane;

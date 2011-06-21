@@ -7,6 +7,10 @@ function ding_wiki_init() {
   //Add our own stylesheet
   drupal_add_css(drupal_get_path('module', 'ding_wiki') . '/css/ding_wiki.css');
   
+  //Add our stylesheet
+  drupal_add_js(drupal_get_path('module', 'ding_wiki') . '/js/ding_wiki.js');
+  
+  
   global $custom_theme, $user;
  
   if (variable_get('node_admin_theme', 0) && !ding_user_has_secure_role($user)) {
@@ -89,12 +93,6 @@ function ding_wiki_theme_registry_alter(&$theme_registry) {
   $theme_hooks = array('node', 'content_field');
   foreach ($theme_hooks as $hook) {
     $theme_registry[$hook]['theme paths'][] = $theme_path;
-  }
-}
-
-function ding_wiki_preprocess_node(&$vars) {
-  if ($vars['type'] == 'wiki_page') {
-    drupal_add_js(drupal_get_path('module', 'ding_wiki') . '/js/ding_wiki.js');
   }
 }
 
