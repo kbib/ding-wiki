@@ -4,7 +4,30 @@
  * Implementation of hook_init().
  */
 function ding_wiki_init() {
+  //Add our own stylesheet
   drupal_add_css(drupal_get_path('module', 'ding_wiki') . '/css/ding_wiki.css');
+  
+  global $custom_theme, $user;
+ 
+  if (variable_get('node_admin_theme', 0) && !ding_user_has_secure_role($user)) {
+    //Define the types should use the default theme instead of the admin one
+    $custom_form_types = array('wiki-page');
+ 
+    $use_custom_theme = false;
+ 
+    //Use default theme when adding types or edit
+    $use_custom_theme = (arg(0) == 'node' && arg(1) == 'add' && in_array(arg(2), $custom_form_types));
+ 
+    if (!$use_custom_theme && (arg(0) == 'node' && arg(2) == 'edit')) {
+      $node = node_load(arg(1));
+      $use_custom_theme = in_array($node->type, $custom_form_types);
+    }
+ 
+    //Set the theme 
+    if ($use_custom_theme) {
+      $custom_theme = variable_get('theme_default', '0');
+    }
+  }
 }
 
 
@@ -100,6 +123,29 @@ function ding_wiki_field_formatter_info() {
   }
   
   return $formatters;
+}
+
+/**
+ * Implementation of hook_form_ID_alter().
+ */
+function ding_wiki_form_wiki_page_node_form_alter(&$form, &$form_state) {
+  global $user;
+  
+  //Make sure buttons stay at the end
+  $form['buttons']['#weight'] = 9999;
+  
+  if (!ding_user_has_secure_role($user)) {
+    
+    //Remove revision information from the form. We do not wat to bother users
+    //with this 
+    unset($form['revision_information']);
+    
+    //Remove teaser split - this isn't something for users
+    unset($form['body_field']['teaser_js']);
+    unset($form['body_field']['teaser_include']);
+
+    unset($form['body_field']['format']);
+  }
 }
 
 /**

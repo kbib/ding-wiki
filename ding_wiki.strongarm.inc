@@ -30,9 +30,10 @@ function ding_wiki_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'better_formats_allowed_wiki_page';
-  $strongarm->value = array(
-    0 => 3,
-  );
+  // We do not know what id the wiki content format will be created with so we store and retrieve it 
+  // using a variable set in ding_wiki_setup_filters() using install and updates.
+  // Do not edit this!
+  $strongarm->value = variable_get('ding_wiki_node_input_format', NULL);
 
   $export['better_formats_allowed_wiki_page'] = $strongarm;
   $strongarm = new stdClass;
@@ -110,7 +111,7 @@ function ding_wiki_strongarm() {
     'options' => '6',
     'comment_settings' => '8',
     'menu' => '-4',
-    'taxonomy' => '0',
+    'taxonomy' => '3',
     'path' => '9',
     'path_redirect' => '7',
   );
@@ -308,5 +309,19 @@ function ding_wiki_strongarm() {
   );
 
   $export['node_type_wiki-page_access_settings'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'show_diff_inline_wiki_page';
+  $strongarm->value = 0;
+
+  $export['show_diff_inline_wiki_page'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'show_preview_changes_wiki_page';
+  $strongarm->value = 0;
+
+  $export['show_preview_changes_wiki_page'] = $strongarm;
   return $export;
 }

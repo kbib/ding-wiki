@@ -5,7 +5,77 @@
  */
 function ding_wiki_install() {
   // Bind wiki pages to tag vocabulary
-  db_query("INSERT INTO {vocabulary_node_types} (vid, type) VALUES
+  db_query("REPLACE INTO {vocabulary_node_types} (vid, type) VALUES
     (2, 'wiki_page')
   ");
+
+  ding_wiki_setup_filters();
+}
+
+/**
+ * Set input filters to standard configuration.
+ */
+function ding_wiki_setup_filters() {
+  $formats = array(
+    array(
+  		'name' => 'Wiki content',
+      'roles' => ',2,3,4,5,',
+      'cache' => 1,
+      'filters' => array(
+      	'filter:2:0',
+      	'htmLawed:0:1',
+      ),
+      'wysiwyg' => array('tinymce', 'a:20:{s:7:"default";i:1;s:11:"user_choose";i:0;s:11:"show_toggle";i:0;s:5:"theme";s:8:"advanced";s:8:"language";s:2:"en";s:7:"buttons";a:2:{s:7:"default";a:3:{s:4:"bold";i:1;s:7:"bullist";i:1;s:7:"numlist";i:1;}s:4:"font";a:1:{s:12:"formatselect";i:1;}}s:11:"toolbar_loc";s:3:"top";s:13:"toolbar_align";s:4:"left";s:8:"path_loc";s:4:"none";s:8:"resizing";i:1;s:11:"verify_html";i:1;s:12:"preformatted";i:0;s:22:"convert_fonts_to_spans";i:1;s:17:"remove_linebreaks";i:1;s:23:"apply_source_formatting";i:0;s:27:"paste_auto_cleanup_on_paste";i:0;s:13:"block_formats";s:7:"p,h2,h3";s:11:"css_setting";s:4:"none";s:8:"css_path";s:0:"";s:11:"css_classes";s:0:"";}'),
+    ),
+  );
+
+  foreach ($formats as $format) {
+    //Create or update the input format
+    $format_id = db_result(db_query('SELECT format FROM {filter_formats} WHERE name = "%s" LIMIT 1', $format['name']));
+    if ($format_id) {
+      $format['format'] = $format_id;
+      drupal_write_record('filter_formats', $format, 'format');
+    } else {
+      drupal_write_record('filter_formats', $format);
+      $format_id = db_last_insert_id('filter_formats', 'format');
+    }
+    variable_set('ding_wiki_node_input_format', array($format_id));
+
+    //Setup filters
+    db_query("DELETE FROM {filters} WHERE format = %d", $format['format']);
+    foreach ($format['filters'] as $def) {
+      $tmp = explode(':', $def);
+      $filter = array(
+        'format' => $format['format'],
+        'module' => $tmp[0],
+        'delta' => $tmp[1],
+        'weight' => $tmp[2],
+      );
+      drupal_write_record('filters', $filter);
+    }
+
+    //Setup WYSIWYG options
+    db_query("DELETE FROM {wysiwyg} WHERE format = %d", $format['format']);
+    db_query("INSERT INTO {wysiwyg} (format, editor, settings) VALUES (%d, '%s', '%s')", $format['format'], $format['wysiwyg'][0], $format['wysiwyg'][1]);
+
+    // Set better_formats.
+    $types_formats = array(
+    	'node/wiki_page' => $format_id ,
+    	'comment/wiki_page' => 0,
+    );
+    
+    //Delete existing configuratiuon
+    db_query('DELETE FROM {better_formats_defaults} WHERE type IN ("%s")', implode('","', array_keys($types_formats)));
+    //Create new configuration. Reverse roles to keep default roles in the back.
+    $type_weight = 0;
+    foreach (array_reverse(user_roles()) as $rid => $role) {
+      foreach ($types_formats as $type => $format) {
+        db_query('INSERT INTO {better_formats_defaults} (rid, type, format, type_weight, weight) 
+        					VALUES (%d, "%s", %d, %d, %d)', 
+                  $rid, $type, $format, $type_weight, 0);
+      }
+      $type_weight++;
+    }
+
+  }
 }
