@@ -96,6 +96,11 @@ function ding_wiki_theme_registry_alter(&$theme_registry) {
   }
 }
 
+function ding_wiki_preprocess_content_field(&$vars) {
+  $vars['node_type'] = $vars['node']->type;
+  $vars['node_type_css'] = str_replace('_', '-', $vars['node']->type);
+}
+
 /**
  * Implementation of hook_field_formatter_info().
  */

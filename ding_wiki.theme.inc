@@ -36,7 +36,8 @@ function theme_ding_wiki_formatter_mixed($element) {
     return theme('ting_reference_formatter_default', $element);
   } else {
     $items[$key]++; //Increment the value to keep track of how many times it has been used for good measure
-    return theme('ding_wiki_formatter_text', $element);
+    $class = (($items[$key] % 2) == 1) ? '' : 'even';
+    return '<li class="format-text '.$class.'">'.theme('ding_wiki_formatter_text', $element) .'</li>';
   }
 }
 
