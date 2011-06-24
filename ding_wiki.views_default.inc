@@ -702,36 +702,8 @@ function ding_wiki_views_default_views() {
   ));
   $handler->override_option('link_to_view', 0);
   $handler->override_option('inherit_panels_path', 0);
-  $handler = $view->new_display('panel_pane', 'Recent wiki pages pane 2', 'panel_pane_3');
+  $handler = $view->new_display('panel_pane', 'Recent wiki pages with image pane', 'panel_pane_3');
   $handler->override_option('fields', array(
-    'title' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'strip_tags' => 0,
-        'html' => 0,
-      ),
-      'link_to_node' => 1,
-      'exclude' => 0,
-      'id' => 'title',
-      'table' => 'node',
-      'field' => 'title',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-    ),
     'field_wiki_images_fid' => array(
       'label' => '',
       'alter' => array(
@@ -759,7 +731,7 @@ function ding_wiki_views_default_views() {
       'label_type' => 'none',
       'format' => 'ding_wiki_thumbnail_linked',
       'multiple' => array(
-        'group' => 0,
+        'group' => 1,
         'multiple_number' => '1',
         'multiple_from' => '0',
         'multiple_reversed' => 0,
@@ -776,8 +748,8 @@ function ding_wiki_views_default_views() {
     'type' => array(
       'label' => '',
       'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
+        'alter_text' => 1,
+        'text' => 'wiki',
         'make_link' => 0,
         'path' => '',
         'link_class' => '',
@@ -807,25 +779,53 @@ function ding_wiki_views_default_views() {
       ),
       'relationship' => 'none',
     ),
+    'title' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'strip_tags' => 0,
+        'html' => 0,
+      ),
+      'link_to_node' => 1,
+      'exclude' => 0,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
   ));
   $handler->override_option('arguments', array());
   $handler->override_option('items_per_page', 2);
-  $handler->override_option('pane_title', '');
+  $handler->override_option('pane_title', 'Recent wiki pages with image');
   $handler->override_option('pane_description', '');
   $handler->override_option('pane_category', array(
     'name' => 'View panes',
     'weight' => 0,
   ));
   $handler->override_option('allow', array(
-    'use_pager' => FALSE,
-    'items_per_page' => FALSE,
-    'offset' => FALSE,
-    'link_to_view' => FALSE,
-    'more_link' => FALSE,
-    'path_override' => FALSE,
-    'title_override' => FALSE,
-    'exposed_form' => FALSE,
-    'fields_override' => FALSE,
+    'use_pager' => 0,
+    'items_per_page' => 0,
+    'offset' => 0,
+    'link_to_view' => 0,
+    'more_link' => 0,
+    'path_override' => 0,
+    'title_override' => 'title_override',
+    'exposed_form' => 0,
+    'fields_override' => 0,
   ));
   $handler->override_option('argument_input', array());
   $handler->override_option('link_to_view', 0);
