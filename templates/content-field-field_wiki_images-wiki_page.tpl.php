@@ -40,7 +40,7 @@
         $item = $item['view'];
       endif;
     endforeach;
-    print (sizeof($items) > 1) ? theme('item_list', $items) : array_pop($items);
+    print theme('item_list', $items);
   ?>
 
   <?php if (!$page) : ?>

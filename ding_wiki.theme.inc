@@ -59,6 +59,6 @@ function theme_imagecache_formatter_description($element) {
   $class = "imagecache imagecache-$presetname imagecache-$style imagecache-{$element['#formatter']}";
   return '<div class="' . $class .'">' .  
     theme('imagecache', $presetname, $item['filepath'], $item['data']['alt'], $item['data']['title'], array('class' => $class)) .
-    '<span>' . $item['data']['description'] . '</span>' .     
+    (($item['data']['description']) ? '<div class="description">' . $item['data']['description'] . '</div>' : '') .     
   '</div>';
 }
