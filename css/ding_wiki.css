@@ -7,32 +7,38 @@
 .node-wiki_page .content .item-list { margin-left: 0; }
 .node-wiki_page .content .field h3 { font-size: 100%; font-weight: bold; line-height: normal; }
 
-.field-wiki-images { background: url(../img/wiki-images-box-sprite.png) top left no-repeat; padding-top: 7px; }
-.field-wiki-images .more { margin: 5px 0 30px; text-align: right; }
+.field-wiki-images .more { margin: 0 0 30px; padding: 5px 0 0; text-align: right; }
+.field-wiki-images .more,
+.field-wiki-images .more *,
+#content .field-wiki-images .more a:hover { background: #FFF; }
 
-.field-wiki-images .jcarousel-container { background: url(../img/wiki-images-box-sprite.png) bottom left no-repeat; padding-bottom: 7px;} 
-.field-wiki-images .jcarousel-container .jcarousel-list { padding: 0; margin: 0; }
 
 /* Wiki images carousel */
-.field-wiki-images .jcarousel-container { padding: 5px 15px 12px; }
-.field-wiki-images .jcarousel-container .jcarousel-item { width: 138px; max-height: 120px; height: auto; margin: 0; padding: 0; list-style: none outside; }
-.field-wiki-images .jcarousel-container .jcarousel-item > * { display: block; padding: 0 10px; }
-.field-wiki-images .jcarousel-container .jcarousel-item > > * { display: block; margin: 0; }
-.field-wiki-images .jcarousel-container .jcarousel-item img { display: block; margin: 0; }
 
-.field-wiki-images .jcarousel-next-horizontal{position: absolute; top: 35%; right: -14px; width: 35px; height: 35px; cursor: pointer; background: transparent url(../img/buttons-sprite.png) no-repeat 0 -35px;}
-  .field-wiki-images .jcarousel-next-horizontal:hover {background-position: -35px -35px;}
-  .field-wiki-images .jcarousel-next-horizontal:active {background-position: -70px -35px;}
-  .field-wiki-images .jcarousel-next-disabled-horizontal,
-  .field-wiki-images .jcarousel-next-disabled-horizontal:hover,
-  .field-wiki-images .jcarousel-next-disabled-horizontal:active {cursor: default; background-position: -105px -35px;}
+.node-type-wiki-page .ding-wiki-carousel { background: none; padding-top: 0; }
+.node-type-wiki-page .ding-wiki-carousel .field-wiki-images { background: url(../img/wiki-images-box-sprite.png) top left no-repeat; padding-top: 7px; padding-bottom: 0px; }
+.node-type-wiki-page .ding-wiki-carousel .field-wiki-images .jcarousel-container { background: url(../img/wiki-images-box-sprite.png) bottom left no-repeat; padding-bottom: 7px;} 
+.node-type-wiki-page .ding-wiki-carousel .field-wiki-images .jcarousel-container .jcarousel-list { padding: 0; margin: 0; }
 
-.field-wiki-images .jcarousel-prev-horizontal {position: absolute; top: 35%; left: -14px; width: 35px; height: 35px; cursor: pointer; background: transparent url(../img/buttons-sprite.png) no-repeat 0 0;}
-  .field-wiki-images .jcarousel-prev-horizontal:hover {background-position: -35px 0;}
-  .field-wiki-images .jcarousel-prev-horizontal:active {background-position: -70px 0;}
-  .field-wiki-images .jcarousel-prev-disabled-horizontal,
-  .field-wiki-images .jcarousel-prev-disabled-horizontal:hover,
-  .field-wiki-images .jcarousel-prev-disabled-horizontal:active {cursor: default; background-position: -105px 0;}
+.ding-wiki-carousel .field-wiki-images .jcarousel-container { padding: 5px 15px 12px; }
+.ding-wiki-carousel .field-wiki-images .jcarousel-container .jcarousel-item { width: 138px; max-height: 120px; height: auto; margin: 0; padding: 0; list-style: none outside; }
+.ding-wiki-carousel .field-wiki-images .jcarousel-container .jcarousel-item > * { display: block; padding: 0 10px; }
+.ding-wiki-carousel .field-wiki-images .jcarousel-container .jcarousel-item > > * { display: block; margin: 0; }
+.ding-wiki-carousel .field-wiki-images .jcarousel-container .jcarousel-item img { display: block; margin: 0; }
+
+.ding-wiki-carousel .field-wiki-images .jcarousel-next-horizontal{position: absolute; top: 35%; right: -14px; width: 35px; height: 35px; cursor: pointer; background: transparent url(../img/buttons-sprite.png) no-repeat 0 -35px;}
+  .ding-wiki-carousel .field-wiki-images .jcarousel-next-horizontal:hover {background-position: -35px -35px;}
+  .ding-wiki-carousel .field-wiki-images .jcarousel-next-horizontal:active {background-position: -70px -35px;}
+  .ding-wiki-carousel .field-wiki-images .jcarousel-next-disabled-horizontal,
+  .ding-wiki-carousel .field-wiki-images .jcarousel-next-disabled-horizontal:hover,
+  .ding-wiki-carousel .field-wiki-images .jcarousel-next-disabled-horizontal:active {cursor: default; background-position: -105px -35px;}
+
+.ding-wiki-carousel .field-wiki-images .jcarousel-prev-horizontal {position: absolute; top: 35%; left: -14px; width: 35px; height: 35px; cursor: pointer; background: transparent url(../img/buttons-sprite.png) no-repeat 0 0;}
+  .ding-wiki-carousel .field-wiki-images .jcarousel-prev-horizontal:hover {background-position: -35px 0;}
+  .ding-wiki-carousel .field-wiki-images .jcarousel-prev-horizontal:active {background-position: -70px 0;}
+  .ding-wiki-carousel .field-wiki-images .jcarousel-prev-disabled-horizontal,
+  .ding-wiki-carousel .field-wiki-images .jcarousel-prev-disabled-horizontal:hover,
+  .ding-wiki-carousel .field-wiki-images .jcarousel-prev-disabled-horizontal:active {cursor: default; background-position: -105px 0;}
 
 /* Wiki references */
 .wiki-page-field-ting-refs li { padding: 5px 0; }
@@ -46,7 +52,7 @@
 .ding-wiki-terms-pane .views-row-first { border-left: 0px none; }  
 
 /* Wiki page create/edit forms */
-#ding-wiki-page-form .pane-form .form-item { padding: 9px; margin: 0 0 10px; border: 1px solid #DDD; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+#ding-wiki-page-form .pane-form .form-itessm { padding: 9px; margin: 0 0 10px; border: 1px solid #DDD; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
 #ding-wiki-page-form .form-item label { text-transform: uppercase; }
 #ding-wiki-page-form table { width: 100%;  }
 #ding-wiki-page-form tr.even,
@@ -66,9 +72,7 @@
 
 /* Make sure we do not mess around with the WYSIWYG editor */
 #ding-wiki-page-form .mceEditor table { width: auto; }
-
-#ding-wiki-page-form .link-field-column { width: 100%; float: none; }
-
+dsdsaadda
 /* Form buttons */
 #ding-wiki-page-form .form-submit { cursor: pointer; padding: 2px 10px; color: #333; text-align: center; font-weight: normal; } 
 /* Create a gradient */
@@ -86,12 +90,18 @@
 
 /* Wiki panels placed on external pages */
 /* We move the box outside the pane content to include the title */
-.pane-field_wiki_images { background: url(../img/wiki-images-box-sprite.png) top left no-repeat; padding-top: 7px; }
-.pane-field_wiki_images .field-wiki-images { background: url(../img/wiki-images-box-sprite.png) bottom left no-repeat; padding-top: 0; padding-bottom: 7px;} 
-.pane-field_wiki_images .field-wiki-images .jcarousel-container { background: none; padding-bottom: none; } 
+.ding-wiki-carousel { background: url(../img/wiki-images-box-sprite.png) top left no-repeat; padding-top: 7px; }
+.ding-wiki-carousel .field-wiki-images { background: url(../img/wiki-images-box-sprite.png) bottom left no-repeat; padding-top: 0; padding-bottom: 7px;} 
+.ding-wiki-carousel .field-wiki-images .jcarousel-container { background: none; padding-bottom: none; } 
 
 .pane-field_wiki_images h3 { font-size: 100%; font-weight: bold; }
 .pane-field_wiki_images .more { margin: 5px 0; text-align: right; }
 .pane-field_wiki_images h3,
 .pane-field_wiki_images .more { padding: 0 25px; }
 
+/* Wiki gallery subpages */
+.ding-wiki-gallery .panel-threecol-left-stacked-right .panel-middle { padding-right: 25px; width: 445px; }
+.ding-wiki-gallery .ding-wiki-carousel .count { float: left; padding: 0 0 0 25px; }
+.ding-wiki-gallery .ding-wiki-carousel .controls { padding: 0 25px 0 0 ;text-align: right; }
+.ding-wiki-gallery .pane-gallerific { margin: 0 0 40px; }
+.ding-wiki-gallery .pane-gallerific img{ width: 100%; }

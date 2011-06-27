@@ -41,16 +41,13 @@ function theme_ding_wiki_formatter_mixed($element) {
   }
 }
 
-function theme_imagecache_formatter_description($element) {
+function theme_ding_wiki_formatter_thumbnail_description($element) {
   // Inside a view $element may contain NULL data. In that case, just return.
   if (empty($element['#item']['fid'])) {
     return '';
   }
 
-  // Extract the preset name from the formatter name.
-  $presetname = substr($element['#formatter'], 0, strrpos($element['#formatter'], '_'));
-  $style = 'linked';
-  $style = 'default';
+  $presetname = 'ding_wiki_thumbnail';
 
   $item = $element['#item'];
   $item['data']['alt'] = isset($item['data']['alt']) ? $item['data']['alt'] : '';
@@ -59,6 +56,29 @@ function theme_imagecache_formatter_description($element) {
   $class = "imagecache imagecache-$presetname imagecache-$style imagecache-{$element['#formatter']}";
   return '<div class="' . $class .'">' .  
     theme('imagecache', $presetname, $item['filepath'], $item['data']['alt'], $item['data']['title'], array('class' => $class)) .
+    (($item['data']['description']) ? '<div class="description">' . $item['data']['description'] . '</div>' : '') .     
+  '</div>';
+}
+
+function theme_ding_wiki_formatter_thumbnail_link_description($element) {
+  // Inside a view $element may contain NULL data. In that case, just return.
+  if (empty($element['#item']['fid'])) {
+    return '';
+  }
+
+  $presetname = 'ding_wiki_thumbnail';
+
+  $item = $element['#item'];
+  $item['data']['alt'] = isset($item['data']['alt']) ? $item['data']['alt'] : '';
+  $item['data']['title'] = isset($item['data']['title']) ? $item['data']['title'] : NULL;
+
+
+  $imagetag = theme('imagecache', $presetname, $item['filepath'], $item['data']['alt'], $item['data']['title']);
+  $path = file_create_url($item['filepath']);
+  $class = "imagecache imagecache-$presetname imagecache-$style imagecache-{$element['#formatter']}";
+  
+  return '<div class="' . $class .'">' .  
+    l($imagetag, $path, array('attributes' => array('class' => $class), 'html' => TRUE)) .
     (($item['data']['description']) ? '<div class="description">' . $item['data']['description'] . '</div>' : '') .     
   '</div>';
 }

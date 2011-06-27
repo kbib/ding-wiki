@@ -7,7 +7,8 @@ function ding_wiki_init() {
   //Add our own stylesheet
   drupal_add_css(drupal_get_path('module', 'ding_wiki') . '/css/ding_wiki.css');
   
-  //Add our stylesheet
+  //Add our javascript
+  drupal_add_js(drupal_get_path('module', 'ding_wiki') . '/js/jquery.gallerific.js');
   drupal_add_js(drupal_get_path('module', 'ding_wiki') . '/js/ding_wiki.js');
   
   
@@ -70,15 +71,15 @@ function ding_wiki_theme() {
       'arguments' => array('element' => NULL),
       'file'	=> $file,
     ),
-  );
-  
-  foreach (imagecache_presets() as $preset) {
-    $theme['ding_wiki_formatter_'. $preset['presetname'] .'_description'] = array(
+    'ding_wiki_formatter_thumbnail_description' => array(
       'arguments' => array('element' => NULL),
-      'function' => 'theme_imagecache_formatter_description',
-      'file' => $file,
-    );
-  }
+      'file'	=> $file,
+    ),
+    'ding_wiki_formatter_thumbnail_link_description' => array(
+      'arguments' => array('element' => NULL),
+      'file'	=> $file,
+    ),
+  );
   
   return $theme;
 }
@@ -99,6 +100,9 @@ function ding_wiki_theme_registry_alter(&$theme_registry) {
 function ding_wiki_preprocess_content_field(&$vars) {
   $vars['node_type'] = $vars['node']->type;
   $vars['node_type_css'] = str_replace('_', '-', $vars['node']->type);
+  
+  // Pass along information whether this is a gallery subpage for a wiki node 
+  $vars['wiki_gallery'] = (strrpos($_GET['q'], 'wiki_gallery') !== FALSE);
 }
 
 /**
@@ -116,14 +120,17 @@ function ding_wiki_field_formatter_info() {
       'field types' => array('ting_reference'),
       'multiple values' => CONTENT_HANDLE_CORE,
     ),
+    'thumbnail_description' => array(
+    	'label' => t('Ding! wiki thumbnail with description'),
+    	'field types' => array('image', 'filefield'),
+      'multiple values' => CONTENT_HANDLE_CORE,
+    ),
+    'thumbnail_link_description' => array(
+    	'label' => t('Ding! wiki thumbnail linked to full image with description'),
+    	'field types' => array('image', 'filefield'),
+      'multiple values' => CONTENT_HANDLE_CORE,
+    ),
   );
-  
-  foreach (imagecache_presets() as $preset) {
-    $formatters[$preset['presetname'] .'_description'] = array(
-      'label' => t('@preset image with description', array('@preset' => $preset['presetname'])),
-      'field types' => array('image', 'filefield'),
-    );
-  }
   
   return $formatters;
 }
@@ -138,8 +145,6 @@ function ding_wiki_form_wiki_page_node_form_alter(&$form, &$form_state) {
   $form['buttons']['#weight'] = 9999;
   
   if (!ding_user_has_secure_role($user)) {
-    
-    //Remove revision information from the form. We do not wat to bother users
     //with this 
     unset($form['revision_information']);
     

@@ -268,7 +268,7 @@ function ding_wiki_content_default_fields() {
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'ding_wiki_thumbnail_description',
+        'format' => 'thumbnail_description',
         'exclude' => 0,
       ),
       '4' => array(

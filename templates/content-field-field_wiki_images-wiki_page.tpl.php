@@ -43,14 +43,17 @@
     print theme('item_list', $items);
   ?>
 
-  <?php if (!$page) : ?>
+  <?php if (!$page && !$wiki_gallery) : ?>
     <div class="more">
      <?php print l(t('See the wiki page'), 'node/' . $node->nid) ?>  
     </div>
-  <?php elseif (false) : ?>
+  <?php elseif (!$wiki_gallery) : ?>
   <div class="more">
-    <?php print l(t('See all images in the gallery'), 'node/' . $node->nid . '/wiki-gallery') ?>
+    <?php print l(t('See all images in the gallery'), 'node/' . $node->nid . '/wiki_gallery') ?>
   </div>
+  <?php elseif ($wiki_gallery) : ?>
+   <div class="count"></div>
+   <div class="controls"></div>
   <?php endif; ?>
 </div>
 <?php endif; ?>
