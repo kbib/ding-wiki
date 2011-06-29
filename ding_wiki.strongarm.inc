@@ -127,6 +127,13 @@ function ding_wiki_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'ctm_menu_settings_mode';
+  $strongarm->value = '1';
+
+  $export['ctm_menu_settings_mode'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'ding_wiki_node_revisions_disabled';
   $strongarm->value = FALSE;
 
@@ -248,8 +255,19 @@ function ding_wiki_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_block_all_available';
+  $strongarm->value = 1;
+
+  $export['menu_block_all_available'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_wiki_page';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'admin',
+    1 => 'devel',
+    2 => 'features',
+  );
 
   $export['menu_wiki_page'] = $strongarm;
   $strongarm = new stdClass;
@@ -257,17 +275,18 @@ function ding_wiki_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_access_settings';
   $strongarm->value = array(
-    'per_node' => 1,
+    'per_node' => '1',
     'priority' => '10',
     'view' => array(
-      1 => 1,
-      2 => 2,
+      0 => '1',
+      1 => '2',
     ),
     'update' => array(
-      1 => 1,
-      2 => 2,
+      0 => '2',
     ),
-    'delete' => array(),
+    'delete' => array(
+      0 => '2',
+    ),
   );
 
   $export['node_access_settings'] = $strongarm;

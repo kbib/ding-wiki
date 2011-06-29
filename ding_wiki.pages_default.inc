@@ -352,21 +352,31 @@ function ding_wiki_default_page_manager_handlers() {
     $pane = new stdClass;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
-    $pane->type = 'library_portal';
-    $pane->subtype = 'library_portal';
+    $pane->type = 'menu_tree';
+    $pane->subtype = '_active';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'default_menu' => 'menu-organisation',
-      'context' => 'argument_nid_1',
-      'override_title' => 0,
+      'menu_name' => '_active',
+      'parent_mlid' => '_active:0',
+      'title_link' => 0,
+      'admin_title' => 'Page menu',
+      'level' => '1',
+      'follow' => 0,
+      'depth' => '1',
+      'expanded' => 0,
+      'sort' => 0,
+      'override_title' => 1,
       'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'pane-library_portal',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-1'] = $pane;
@@ -827,22 +837,32 @@ function ding_wiki_default_page_manager_pages() {
     $pane = new stdClass;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
-    $pane->type = 'custom';
-    $pane->subtype = 'custom';
+    $pane->type = 'menu_tree';
+    $pane->subtype = '_active';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'admin_title' => '',
-      'title' => 'sdfdsf',
-      'body' => 'sdfsdf',
-      'format' => '1',
-      'substitute' => 1,
+      'menu_name' => '_active',
+      'parent_mlid' => '_active:0',
+      'title_link' => 0,
+      'admin_title' => 'Page menu',
+      'level' => '1',
+      'follow' => 0,
+      'depth' => '1',
+      'expanded' => 0,
+      'sort' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+      'context' => 'argument_nid_1',
     );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'pane-library_portal',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-1'] = $pane;
