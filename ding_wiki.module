@@ -176,4 +176,14 @@ function _ding_wiki_node_is_wiki($node) {
   return $node->type == 'wiki_page';
 }
 
+/**
+ * Determine whether a node has a menu link. 
+ * 
+ * Used to determine pane visibility.
+ */
+function _ding_wiki_in_menu($node) {
+  return (bool) db_result(db_query("SELECT count(menu_name) as count FROM {menu_links} WHERE link_path = '%s'", 'node/' . $node->nid));
+}
+
+
 include_once('ding_wiki.features.inc');

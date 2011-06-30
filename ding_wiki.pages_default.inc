@@ -355,13 +355,24 @@ function ding_wiki_default_page_manager_handlers() {
     $pane->type = 'menu_tree';
     $pane->subtype = '_active';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'php',
+          'settings' => array(
+            'description' => 'Menu is set',
+            'php' => 'return _ding_wiki_in_menu($contexts[\'argument_nid_1\']->data);',
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'menu_name' => '_active',
       'parent_mlid' => '_active:0',
       'title_link' => 0,
       'admin_title' => 'Page menu',
-      'level' => '1',
+      'level' => '2',
       'follow' => 0,
       'depth' => '1',
       'expanded' => 0,
@@ -383,6 +394,46 @@ function ding_wiki_default_page_manager_handlers() {
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
     $pane->pid = 'new-2';
+    $pane->panel = 'left';
+    $pane->type = 'menu_tree';
+    $pane->subtype = 'menu-wiki';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'php',
+          'settings' => array(
+            'description' => 'Menu is set',
+            'php' => 'return _ding_wiki_in_menu($contexts[\'argument_nid_1\']->data);',
+          ),
+          'not' => TRUE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'menu_name' => 'menu-organisation',
+      'parent_mlid' => '_active:0',
+      'title_link' => 0,
+      'admin_title' => 'Default menu',
+      'level' => '1',
+      'follow' => 0,
+      'depth' => '1',
+      'expanded' => 0,
+      'sort' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-2'] = $pane;
+    $display->panels['left'][1] = 'new-2';
+    $pane = new stdClass;
+    $pane->pid = 'new-3';
     $pane->panel = 'middle';
     $pane->type = 'page_title';
     $pane->subtype = 'page_title';
@@ -402,10 +453,10 @@ function ding_wiki_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-2'] = $pane;
-    $display->panels['middle'][0] = 'new-2';
+    $display->content['new-3'] = $pane;
+    $display->panels['middle'][0] = 'new-3';
     $pane = new stdClass;
-    $pane->pid = 'new-3';
+    $pane->pid = 'new-4';
     $pane->panel = 'middle';
     $pane->type = 'page_tabs';
     $pane->subtype = 'page_tabs';
@@ -424,10 +475,10 @@ function ding_wiki_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-3'] = $pane;
-    $display->panels['middle'][1] = 'new-3';
+    $display->content['new-4'] = $pane;
+    $display->panels['middle'][1] = 'new-4';
     $pane = new stdClass;
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-5';
     $pane->panel = 'middle';
     $pane->type = 'node_content';
     $pane->subtype = 'node_content';
@@ -455,10 +506,10 @@ function ding_wiki_default_page_manager_handlers() {
     );
     $pane->extras = array();
     $pane->position = 2;
-    $display->content['new-4'] = $pane;
-    $display->panels['middle'][2] = 'new-4';
+    $display->content['new-5'] = $pane;
+    $display->panels['middle'][2] = 'new-5';
     $pane = new stdClass;
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-6';
     $pane->panel = 'middle';
     $pane->type = 'content_field';
     $pane->subtype = 'field_ting_refs';
@@ -479,10 +530,10 @@ function ding_wiki_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 3;
-    $display->content['new-5'] = $pane;
-    $display->panels['middle'][3] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['middle'][3] = 'new-6';
     $pane = new stdClass;
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-7';
     $pane->panel = 'middle';
     $pane->type = 'node_terms';
     $pane->subtype = 'node_terms';
@@ -508,10 +559,10 @@ function ding_wiki_default_page_manager_handlers() {
     );
     $pane->extras = array();
     $pane->position = 4;
-    $display->content['new-6'] = $pane;
-    $display->panels['middle'][4] = 'new-6';
+    $display->content['new-7'] = $pane;
+    $display->panels['middle'][4] = 'new-7';
     $pane = new stdClass;
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-8';
     $pane->panel = 'middle';
     $pane->type = 'node_comments';
     $pane->subtype = 'node_comments';
@@ -534,10 +585,10 @@ function ding_wiki_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 5;
-    $display->content['new-7'] = $pane;
-    $display->panels['middle'][5] = 'new-7';
+    $display->content['new-8'] = $pane;
+    $display->panels['middle'][5] = 'new-8';
     $pane = new stdClass;
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-9';
     $pane->panel = 'middle';
     $pane->type = 'node_comment_form';
     $pane->subtype = 'node_comment_form';
@@ -556,10 +607,10 @@ function ding_wiki_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 6;
-    $display->content['new-8'] = $pane;
-    $display->panels['middle'][6] = 'new-8';
+    $display->content['new-9'] = $pane;
+    $display->panels['middle'][6] = 'new-9';
     $pane = new stdClass;
-    $pane->pid = 'new-9';
+    $pane->pid = 'new-10';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'tagadelic-2';
@@ -577,10 +628,10 @@ function ding_wiki_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-9'] = $pane;
-    $display->panels['right'][0] = 'new-9';
+    $display->content['new-10'] = $pane;
+    $display->panels['right'][0] = 'new-10';
     $pane = new stdClass;
-    $pane->pid = 'new-10';
+    $pane->pid = 'new-11';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'wiki_list-panel_pane_2';
@@ -598,10 +649,10 @@ function ding_wiki_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-10'] = $pane;
-    $display->panels['right'][1] = 'new-10';
+    $display->content['new-11'] = $pane;
+    $display->panels['right'][1] = 'new-11';
     $pane = new stdClass;
-    $pane->pid = 'new-11';
+    $pane->pid = 'new-12';
     $pane->panel = 'right';
     $pane->type = 'relevant';
     $pane->subtype = 'relevant_campaigns';
@@ -622,8 +673,8 @@ function ding_wiki_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 2;
-    $display->content['new-11'] = $pane;
-    $display->panels['right'][2] = 'new-11';
+    $display->content['new-12'] = $pane;
+    $display->panels['right'][2] = 'new-12';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -658,6 +709,8 @@ function ding_wiki_default_page_manager_pages() {
       ),
     ),
     'logic' => 'and',
+    'type' => 'none',
+    'settings' => NULL,
   );
   $page->menu = array(
     'type' => 'tab',
@@ -840,13 +893,24 @@ function ding_wiki_default_page_manager_pages() {
     $pane->type = 'menu_tree';
     $pane->subtype = '_active';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'php',
+          'settings' => array(
+            'description' => 'Menu is set',
+            'php' => 'return _ding_wiki_in_menu($contexts[\'argument_nid_1\']->data);',
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'menu_name' => '_active',
       'parent_mlid' => '_active:0',
       'title_link' => 0,
       'admin_title' => 'Page menu',
-      'level' => '1',
+      'level' => '2',
       'follow' => 0,
       'depth' => '1',
       'expanded' => 0,
@@ -869,6 +933,46 @@ function ding_wiki_default_page_manager_pages() {
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
     $pane->pid = 'new-2';
+    $pane->panel = 'left';
+    $pane->type = 'menu_tree';
+    $pane->subtype = 'menu-organisation';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'php',
+          'settings' => array(
+            'description' => 'Menu is set',
+            'php' => 'return _ding_wiki_in_menu($contexts[\'argument_nid_1\']->data);',
+          ),
+          'not' => TRUE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'menu_name' => 'menu-organisation',
+      'parent_mlid' => 'menu-organisation:1026',
+      'title_link' => 0,
+      'admin_title' => 'Default menu',
+      'level' => '1',
+      'follow' => 0,
+      'depth' => '1',
+      'expanded' => 0,
+      'sort' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-2'] = $pane;
+    $display->panels['left'][1] = 'new-2';
+    $pane = new stdClass;
+    $pane->pid = 'new-3';
     $pane->panel = 'middle';
     $pane->type = 'page_title';
     $pane->subtype = 'page_title';
@@ -888,10 +992,10 @@ function ding_wiki_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-2'] = $pane;
-    $display->panels['middle'][0] = 'new-2';
+    $display->content['new-3'] = $pane;
+    $display->panels['middle'][0] = 'new-3';
     $pane = new stdClass;
-    $pane->pid = 'new-3';
+    $pane->pid = 'new-4';
     $pane->panel = 'middle';
     $pane->type = 'page_tabs';
     $pane->subtype = 'page_tabs';
@@ -910,10 +1014,10 @@ function ding_wiki_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-3'] = $pane;
-    $display->panels['middle'][1] = 'new-3';
+    $display->content['new-4'] = $pane;
+    $display->panels['middle'][1] = 'new-4';
     $pane = new stdClass;
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-5';
     $pane->panel = 'middle';
     $pane->type = 'content_field';
     $pane->subtype = 'field_wiki_images';
@@ -936,10 +1040,10 @@ function ding_wiki_default_page_manager_pages() {
     );
     $pane->extras = array();
     $pane->position = 2;
-    $display->content['new-4'] = $pane;
-    $display->panels['middle'][2] = 'new-4';
+    $display->content['new-5'] = $pane;
+    $display->panels['middle'][2] = 'new-5';
     $pane = new stdClass;
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-6';
     $pane->panel = 'middle';
     $pane->type = 'gallerific';
     $pane->subtype = 'gallerific';
@@ -957,10 +1061,10 @@ function ding_wiki_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 3;
-    $display->content['new-5'] = $pane;
-    $display->panels['middle'][3] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['middle'][3] = 'new-6';
     $pane = new stdClass;
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-7';
     $pane->panel = 'middle';
     $pane->type = 'content_field';
     $pane->subtype = 'field_ting_refs';
@@ -981,10 +1085,10 @@ function ding_wiki_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 4;
-    $display->content['new-6'] = $pane;
-    $display->panels['middle'][4] = 'new-6';
+    $display->content['new-7'] = $pane;
+    $display->panels['middle'][4] = 'new-7';
     $pane = new stdClass;
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-8';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'wiki_tags-panel_pane_1';
@@ -1006,10 +1110,10 @@ function ding_wiki_default_page_manager_pages() {
     );
     $pane->extras = array();
     $pane->position = 5;
-    $display->content['new-7'] = $pane;
-    $display->panels['middle'][5] = 'new-7';
+    $display->content['new-8'] = $pane;
+    $display->panels['middle'][5] = 'new-8';
     $pane = new stdClass;
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-9';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'tagadelic-2';
@@ -1026,10 +1130,10 @@ function ding_wiki_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-8'] = $pane;
-    $display->panels['right'][0] = 'new-8';
+    $display->content['new-9'] = $pane;
+    $display->panels['right'][0] = 'new-9';
     $pane = new stdClass;
-    $pane->pid = 'new-9';
+    $pane->pid = 'new-10';
     $pane->panel = 'right';
     $pane->type = 'relevant';
     $pane->subtype = 'relevant';
@@ -1053,10 +1157,10 @@ function ding_wiki_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-9'] = $pane;
-    $display->panels['right'][1] = 'new-9';
+    $display->content['new-10'] = $pane;
+    $display->panels['right'][1] = 'new-10';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-8';
+  $display->title_pane = 'new-9';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['wiki_gallery'] = $page;
