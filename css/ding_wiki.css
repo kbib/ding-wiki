@@ -48,9 +48,10 @@
 .wiki-page-field-ting-refs li.format-text span { font-weight: normal; }
 
 /* Wiki terms */
-.ding-wiki-terms-pane li { display: inline; margin: 0px 0px 0px 10px; padding: 0px 0px 0px 10px; list-style-type: none; border-left: 1px solid; }
-.ding-wiki-terms-pane .first,
-.ding-wiki-terms-pane .views-row-first { border-left: 0px none; }  
+.ding-wiki-terms-pane ol { padding: 0 20px; }
+.ding-wiki-terms-pane li { display: inline; margin: 0px 10px 0px 0px; padding: 0px 10px 0px 0px; list-style-type: none; border-right: 1px solid; }
+.ding-wiki-terms-pane .last,
+.ding-wiki-terms-pane .views-row-last { border-right: 0px none; }  
 
 /* Wiki page create/edit forms */
 #ding-wiki-page-form .pane-form .form-itessm { padding: 9px; margin: 0 0 10px; border: 1px solid #DDD; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
