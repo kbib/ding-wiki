@@ -40,9 +40,8 @@
         $item = $item['view'];
       endif;
     endforeach;
-    print (sizeof($items) > 1) ? theme('item_list', $items) : array_pop($items);
+    print (!in_array($field_name, array('field_teaser'))) ? theme('item_list', $items) : array_pop($items);
   ?>
-
 
 </div>
 <?php endif; ?>

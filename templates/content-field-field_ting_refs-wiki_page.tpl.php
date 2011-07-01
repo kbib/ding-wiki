@@ -33,14 +33,17 @@
     <h2><?php print t($label) ?></h2>
   <?php endif;?>
 
-  <?php foreach ($items as $delta => &$item) :
-      if ($item['empty']) :
-        unset($items[$delta]);
-      else :
-        $item = $item['view'];
-      endif;
-    endforeach;
-    print (sizeof($items) > 1) ? implode('', $items) : array_pop($items);
-  ?>
+  <ul>
+    <?php foreach ($items as $delta => &$item) :
+        if ($item['empty']) :
+          unset($items[$delta]);
+        else :
+          $item = $item['view'];
+        endif;
+      endforeach;
+      // Ting reference field content is already formatted as lis so we can just output them  
+      print implode('', $items);
+    ?>
+  </ul>
 </div>
 <?php endif; ?>

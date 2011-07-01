@@ -45,7 +45,8 @@
 .wiki-page-field-ting-refs li { padding: 5px 0; }
 .wiki-page-field-ting-refs li.format-text { padding: 2px 10px; }
 .wiki-page-field-ting-refs li.even { background-color: #EBEBEB; }
-.wiki-page-field-ting-refs li.format-text span { font-weight: normal; }
+body .wiki-page-field-ting-refs li.format-text span { font-weight: normal; display: inline; }
+body .wiki-page-field-ting-refs ul li { margin: 0px; }
 
 /* Wiki terms */
 .ding-wiki-terms-pane ol { padding: 0 20px; }
