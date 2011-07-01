@@ -13,6 +13,13 @@ function ding_wiki_install() {
 }
 
 /**
+ * Enable view_revisions_by_content_type module.
+ */
+function ding_wiki_update_6000() {
+  drupal_install_modules(array('view_revisions_by_content_type'));
+}
+
+/**
  * Set input filters to standard configuration.
  */
 function ding_wiki_setup_filters() {

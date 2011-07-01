@@ -117,5 +117,15 @@ function ding_wiki_user_default_permissions() {
     ),
   );
 
+  // Exported permission: view revisions of wiki_page content
+  $permissions['view revisions of wiki_page content'] = array(
+    'name' => 'view revisions of wiki_page content',
+    'roles' => array(
+      '0' => 'administrator',
+      '1' => 'anonymous user',
+      '2' => 'authenticated user',
+    ),
+  );
+
   return $permissions;
 }
