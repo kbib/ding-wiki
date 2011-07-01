@@ -54,7 +54,7 @@
 .ding-wiki-terms-pane .views-row-last { border-right: 0px none; }  
 
 /* Wiki page create/edit forms */
-#ding-wiki-page-form .pane-form .form-itessm { padding: 9px; margin: 0 0 10px; border: 1px solid #DDD; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+#ding-wiki-page-form .pane-form .form-item { padding: 9px; margin: 0 0 10px; border: 1px solid #DDD; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
 #ding-wiki-page-form .form-item label { text-transform: uppercase; }
 #ding-wiki-page-form table { width: 100%;  }
 #ding-wiki-page-form tr.even,
