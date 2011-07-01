@@ -9,7 +9,7 @@ function ding_wiki_install() {
     (2, 'wiki_page')
   ");
 
-  ding_wiki_setup_filters();
+  ding_wiki_setup_input_formats();
 }
 
 /**
@@ -20,9 +20,17 @@ function ding_wiki_update_6000() {
 }
 
 /**
+ * Reset wiki input formats.
+ */
+function ding_wiki_update_6001() {
+  ding_wiki_setup_input_formats();
+}
+
+
+/**
  * Set input filters to standard configuration.
  */
-function ding_wiki_setup_filters() {
+function ding_wiki_setup_input_formats() {
   $formats = array(
     array(
   		'name' => 'Wiki content',
