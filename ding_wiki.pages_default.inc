@@ -646,7 +646,10 @@ function ding_wiki_default_page_manager_handlers() {
       'settings' => NULL,
       'style' => 'ding_box',
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'ding-box-pane-black',
+    );
     $pane->extras = array();
     $pane->position = 1;
     $display->content['new-11'] = $pane;
