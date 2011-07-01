@@ -13,6 +13,10 @@
 
   <div class="content">
 
+    <div class="subject">
+      <?php print l(t('Wiki'), 'wiki'); ?>
+    </div>
+
     <?php if ($node->title): ?>
       <h3><?php print l($node->title, 'node/' . $node->nid); ?></h3>
     <?php endif; ?>
