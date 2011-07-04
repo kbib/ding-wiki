@@ -165,6 +165,14 @@ function ding_wiki_form_node_access_page_alter(&$form, &$form_state) {
 }
 
 /**
+ * Implementation of hook_form_ID_alter().
+ */
+function ding_wiki_form_comment_form_alter(&$form, &$form_state) {
+  // Make the preview comment button disapear
+  $form['preview']['#access'] = FALSE;
+}
+
+/**
  * Implementation of hook_ctools_plugin_directory().
  */
 function ding_wiki_ctools_plugin_directory($owner, $plugin_type) {
