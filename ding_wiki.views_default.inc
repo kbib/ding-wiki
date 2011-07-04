@@ -1460,7 +1460,7 @@ function ding_wiki_views_default_views() {
         'alter_text' => 0,
         'text' => '',
         'make_link' => 1,
-        'path' => 'wiki/[name]',
+        'path' => 'wiki/term/[name]',
         'link_class' => '',
         'alt' => '',
         'prefix' => '',
@@ -1484,7 +1484,7 @@ function ding_wiki_views_default_views() {
       'field' => 'name',
       'relationship' => 'none',
       'override' => array(
-        'button' => 'Override',
+        'button' => 'Use default',
       ),
     ),
     'name_1' => array(

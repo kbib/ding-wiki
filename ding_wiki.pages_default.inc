@@ -1175,25 +1175,25 @@ function ding_wiki_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Wiki list page';
   $page->admin_description = 'Provides a list of wiki pages.';
-  $page->path = 'wiki/term/!tid';
+  $page->path = 'wiki/term/!term';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
   );
   $page->menu = array();
   $page->arguments = array(
-    'tid' => array(
+    'term' => array(
       'id' => 1,
-      'identifier' => 'Taxonomy term: ID',
+      'identifier' => 'Taxonomy term',
       'name' => 'term',
       'settings' => array(
-        'input_form' => 'tid',
+        'input_form' => 'term',
         'vids' => array(
-          2 => 2,
           1 => 0,
           4 => 0,
           5 => 0,
-          9 => 0,
+          6 => 0,
+          2 => 0,
         ),
         'breadcrumb' => 1,
       ),
@@ -1230,7 +1230,7 @@ function ding_wiki_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = 'Wiki pages about %tid:name';
+  $display->title = 'Wiki pages about %term:name';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
