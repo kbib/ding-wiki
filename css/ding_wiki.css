@@ -67,6 +67,7 @@ body .wiki-page-field-ting-refs ul li { margin: 0px; }
 #ding-wiki-page-form table, 
 #ding-wiki-page-form .edit-submit,
 #ding-wiki-page-form .form-submit { border: 1px solid #DDD; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+#ding-wiki-page-form .edit-submit { margin-bottom: 20px; }
 
 #ding-wiki-page-form input.form-autocomplete,
 #ding-wiki-page-form input.form-text, 
