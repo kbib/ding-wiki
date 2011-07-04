@@ -304,7 +304,7 @@ function ding_wiki_content_default_fields() {
       'max_filesize_per_file' => '',
       'max_filesize_per_node' => '',
       'max_resolution' => '0',
-      'min_resolution' => '0',
+      'min_resolution' => '800x0',
       'alt' => '',
       'custom_alt' => 0,
       'title' => '',
