@@ -220,6 +220,7 @@ function ding_wiki_default_page_manager_handlers() {
       'sort' => 0,
       'override_title' => 1,
       'override_title_text' => '',
+      'context' => 'argument_nid_1',
     );
     $pane->cache = array();
     $pane->style = array(
