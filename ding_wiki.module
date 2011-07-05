@@ -56,6 +56,30 @@ function ding_wiki_menu() {
 }
 
 /**
+ * Implementation of hook_nodeapi().
+ */
+function ding_wiki_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
+  // Set default breadcrumb if 
+  // - viewing a wiki page node 
+  // - on a page by itself
+  // - without a menu item
+  if (($node->type == 'wiki_page') && 
+      ($op == 'view') && !$a3 && $a4) {
+    if (!_ding_wiki_in_menu($node)) {
+      $trail = array(
+        l(t('Home'), '<front>'),
+      );
+        
+      $trail[] = l(t('Wiki'), 'wiki');
+  
+      $trail[] = l($node->title, 'node/' . $node->nid);
+        
+      drupal_set_breadcrumb($trail);
+    }
+  }
+}
+
+/**
  * Implementation of hook_theme().
  */
 function ding_wiki_theme() {
