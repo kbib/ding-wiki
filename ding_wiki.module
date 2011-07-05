@@ -203,7 +203,11 @@ function ding_wiki_ctools_plugin_directory($owner, $plugin_type) {
   return 'plugins/' . $plugin_type;
 }
 
-
+/**
+ * Returns whether a node is a wiki node.
+ * 
+ * Used as access callback.
+ */
 function _ding_wiki_node_is_wiki($node) {
   return $node->type == 'wiki_page';
 }
