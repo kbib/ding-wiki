@@ -217,5 +217,14 @@ function _ding_wiki_in_menu($node) {
   return (bool) db_result(db_query("SELECT count(menu_name) as count FROM {menu_links} WHERE link_path = '%s'", 'node/' . $node->nid));
 }
 
+/**
+ * Determine the menu link id for the root wiki page.
+ * 
+ * We do not know what menu link id the wiki root panel will obtain
+ * so we need to retrieve it for panel configuration at runtime.
+ */
+function _ding_wiki_root_mlid() {
+  return db_result(db_query('SELECT mlid FROM {menu_links} WHERE menu_name = "menu-organisation" AND link_path = "wiki"'));
+}
 
 include_once('ding_wiki.features.inc');

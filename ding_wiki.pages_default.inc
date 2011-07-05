@@ -254,7 +254,10 @@ function ding_wiki_default_page_manager_handlers() {
     );
     $pane->configuration = array(
       'menu_name' => 'menu-organisation',
-      'parent_mlid' => 'menu-organisation:1026',
+      // We do not know what menu link id the wiki root panel will obtain
+      // so we need to retrieve it at runtime.
+      // Do not edit this!
+      'parent_mlid' => 'menu-organisation:'._ding_wiki_root_mlid(),
       'title_link' => 0,
       'admin_title' => 'Default menu',
       'level' => '1',
@@ -499,7 +502,10 @@ function ding_wiki_default_page_manager_handlers() {
     );
     $pane->configuration = array(
       'menu_name' => 'menu-organisation',
-      'parent_mlid' => 'menu-organisation:1026',
+      // We do not know what menu link id the wiki root panel will obtain
+      // so we need to retrieve it at runtime.
+      // Do not edit this!
+      'parent_mlid' => 'menu-organisation:'._ding_wiki_root_mlid(),
       'title_link' => 0,
       'admin_title' => 'Default menu',
       'level' => '1',
@@ -1044,7 +1050,10 @@ function ding_wiki_default_page_manager_pages() {
     );
     $pane->configuration = array(
       'menu_name' => 'menu-organisation',
-      'parent_mlid' => 'menu-organisation:1026',
+      // We do not know what menu link id the wiki root panel will obtain
+      // so we need to retrieve it at runtime.
+      // Do not edit this!
+      'parent_mlid' => 'menu-organisation:'._ding_wiki_root_mlid(),
       'title_link' => 0,
       'admin_title' => 'Default menu',
       'level' => '1',
