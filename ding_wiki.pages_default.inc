@@ -942,7 +942,7 @@ function ding_wiki_default_page_manager_pages() {
   $page->arguments = array(
     'node' => array(
       'id' => 1,
-      'identifier' => 'Node: ID',
+      'identifier' => 'Node',
       'name' => 'nid',
       'settings' => array(),
     ),
@@ -967,6 +967,18 @@ function ding_wiki_default_page_manager_pages() {
     'relationships' => array(),
     'access' => array(
       'logic' => 'and',
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'wiki_page' => 'wiki_page',
+            ),
+          ),
+          'context' => 'argument_nid_1',
+          'not' => FALSE,
+        ),
+      ),
     ),
   );
   $display = new panels_display;
