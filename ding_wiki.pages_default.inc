@@ -926,7 +926,21 @@ function ding_wiki_default_page_manager_pages() {
   $page->admin_title = 'Wiki gallery';
   $page->admin_description = '';
   $page->path = 'node/%node/wiki_gallery';
-  $page->access = array();
+  $page->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'node_type',
+        'settings' => array(
+          'type' => array(
+            'wiki_page' => 'wiki_page',
+          ),
+        ),
+        'context' => 'argument_nid_1',
+        'not' => FALSE,
+      ),
+    ),
+    'logic' => 'and',
+  );
   $page->menu = array(
     'type' => 'tab',
     'title' => 'Gallery',
@@ -967,18 +981,7 @@ function ding_wiki_default_page_manager_pages() {
     'relationships' => array(),
     'access' => array(
       'logic' => 'and',
-      'plugins' => array(
-        0 => array(
-          'name' => 'node_type',
-          'settings' => array(
-            'type' => array(
-              'wiki_page' => 'wiki_page',
-            ),
-          ),
-          'context' => 'argument_nid_1',
-          'not' => FALSE,
-        ),
-      ),
+      'plugins' => array(),
     ),
   );
   $display = new panels_display;
