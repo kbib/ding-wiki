@@ -1347,7 +1347,7 @@ function ding_wiki_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = 'Wiki pages about %term:name';
+  $display->title = t('Wiki pages about %term:name');
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
