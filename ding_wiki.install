@@ -10,6 +10,8 @@ function ding_wiki_install() {
   ");
 
   ding_wiki_setup_input_formats();
+
+  ding_wiki_setup_module_weights();
 }
 
 /**
@@ -26,6 +28,12 @@ function ding_wiki_update_6001() {
   ding_wiki_setup_input_formats();
 }
 
+/**
+ * Setup module weights.
+ */
+function ding_wiki_update_6002() {
+  ding_wiki_setup_module_weights();
+}
 
 /**
  * Set input filters to standard configuration.
