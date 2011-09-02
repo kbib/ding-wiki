@@ -168,10 +168,11 @@ function ding_wiki_form_wiki_page_node_form_alter(&$form, &$form_state) {
   $form['buttons']['#weight'] = 9999;
 
   if (!ding_user_has_secure_role($user)) {
-    //with this 
-    unset($form['revision_information']);
-    
-    //Remove teaser split - this isn't something for users
+    // Remove revision information from the form. We do not wat to bother users
+    // with this
+    $form['revision_information']['#access'] = FALSE;
+
+    // Remove teaser split - this isn't something for users
     unset($form['body_field']['teaser_js']);
     unset($form['body_field']['teaser_include']);
 
