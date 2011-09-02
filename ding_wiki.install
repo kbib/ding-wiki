@@ -78,19 +78,27 @@ function ding_wiki_setup_input_formats() {
     	'node/wiki_page' => $format_id ,
     	'comment/wiki_page' => 0,
     );
-    
+
     //Delete existing configuratiuon
     db_query('DELETE FROM {better_formats_defaults} WHERE type IN ("%s")', implode('","', array_keys($types_formats)));
     //Create new configuration. Reverse roles to keep default roles in the back.
     $type_weight = 0;
     foreach (array_reverse(user_roles()) as $rid => $role) {
       foreach ($types_formats as $type => $format) {
-        db_query('INSERT INTO {better_formats_defaults} (rid, type, format, type_weight, weight) 
-        					VALUES (%d, "%s", %d, %d, %d)', 
+        db_query('INSERT INTO {better_formats_defaults} (rid, type, format, type_weight, weight)
+        					VALUES (%d, "%s", %d, %d, %d)',
                   $rid, $type, $format, $type_weight, 0);
       }
       $type_weight++;
     }
 
   }
+}
+
+function ding_wiki_setup_module_weights() {
+  // Both diff and view_revisions_by_content_type wants to take over access control for
+  // node/%/revisions page callbacks. We need view_revisions_by_content_type to set
+  // access control to node revisions for wiki_pages only.
+  // Consequently set view_revisions_by_content_type weight to 1 as diff has 0.
+  db_query('UPDATE {system} SET weight = 1 WHERE name = "view_revisions_by_content_type"');
 }

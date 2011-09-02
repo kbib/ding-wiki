@@ -6,29 +6,28 @@
 function ding_wiki_init() {
   //Add our own stylesheet
   drupal_add_css(drupal_get_path('module', 'ding_wiki') . '/css/ding_wiki.css');
-  
+
   //Add our javascript
   drupal_add_js(drupal_get_path('module', 'ding_wiki') . '/js/jquery.gallerific.js');
   drupal_add_js(drupal_get_path('module', 'ding_wiki') . '/js/ding_wiki.js');
-  
-  
+
   global $custom_theme, $user;
- 
+
   if (variable_get('node_admin_theme', 0) && !ding_user_has_secure_role($user)) {
     //Define the types should use the default theme instead of the admin one
     $custom_form_types = array('wiki-page');
- 
+
     $use_custom_theme = false;
- 
+
     //Use default theme when adding types or edit
     $use_custom_theme = (arg(0) == 'node' && arg(1) == 'add' && in_array(arg(2), $custom_form_types));
- 
+
     if (!$use_custom_theme && (arg(0) == 'node' && arg(2) == 'edit')) {
       $node = node_load(arg(1));
       $use_custom_theme = in_array($node->type, $custom_form_types);
     }
- 
-    //Set the theme 
+
+    //Set the theme
     if ($use_custom_theme) {
       $custom_theme = variable_get('theme_default', '0');
     }
@@ -41,7 +40,7 @@ function ding_wiki_init() {
  */
 function ding_wiki_menu() {
   $items = array();
-  
+
   $items['node/%node/create-wiki-page'] = array(
     'title' => 'Create new wiki page',
     'page callback' => 'drupal_goto',
@@ -51,7 +50,7 @@ function ding_wiki_menu() {
     'type' => MENU_LOCAL_TASK,
     'weight' => -10, //We need to be before the view tab
   );
-  
+
   return $items;
 }
 
@@ -59,21 +58,21 @@ function ding_wiki_menu() {
  * Implementation of hook_nodeapi().
  */
 function ding_wiki_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
-  // Set default breadcrumb if 
-  // - viewing a wiki page node 
+  // Set default breadcrumb if
+  // - viewing a wiki page node
   // - on a page by itself
   // - without a menu item
-  if (($node->type == 'wiki_page') && 
+  if (($node->type == 'wiki_page') &&
       ($op == 'view') && !$a3 && $a4) {
     if (!_ding_wiki_in_menu($node)) {
       $trail = array(
         l(t('Home'), '<front>'),
       );
-        
+
       $trail[] = l(t('Wiki'), 'wiki');
-  
+
       $trail[] = l($node->title, 'node/' . $node->nid);
-        
+
       drupal_set_breadcrumb($trail);
     }
   }
@@ -84,7 +83,7 @@ function ding_wiki_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
  */
 function ding_wiki_theme() {
   $file = drupal_get_path('module', 'ding_wiki') . '/ding_wiki.theme.inc';
-  
+
   $theme = array(
     'ding_wiki_formatter_text' => array(
       'arguments' => array('element' => NULL),
@@ -104,7 +103,7 @@ function ding_wiki_theme() {
       'file'	=> $file,
     ),
   );
-  
+
   return $theme;
 }
 
@@ -112,7 +111,7 @@ function ding_wiki_theme() {
  * Implementation of hook_theme_registry_alter.
  */
 function ding_wiki_theme_registry_alter(&$theme_registry) {
-  
+
   //We provide our own node template for wiki pages so look here as well
   $theme_path = drupal_get_path('module', 'ding_wiki') . '/templates';
   $theme_hooks = array('node', 'content_field');
@@ -124,8 +123,8 @@ function ding_wiki_theme_registry_alter(&$theme_registry) {
 function ding_wiki_preprocess_content_field(&$vars) {
   $vars['node_type'] = $vars['node']->type;
   $vars['node_type_css'] = str_replace('_', '-', $vars['node']->type);
-  
-  // Pass along information whether this is a gallery subpage for a wiki node 
+
+  // Pass along information whether this is a gallery subpage for a wiki node
   $vars['wiki_gallery'] = (strrpos($_GET['q'], 'wiki_gallery') !== FALSE);
 }
 
@@ -155,7 +154,7 @@ function ding_wiki_field_formatter_info() {
       'multiple values' => CONTENT_HANDLE_CORE,
     ),
   );
-  
+
   return $formatters;
 }
 
@@ -164,10 +163,10 @@ function ding_wiki_field_formatter_info() {
  */
 function ding_wiki_form_wiki_page_node_form_alter(&$form, &$form_state) {
   global $user;
-  
-  //Make sure buttons stay at the end
+
+  // Make sure buttons stay at the end
   $form['buttons']['#weight'] = 9999;
-  
+
   if (!ding_user_has_secure_role($user)) {
     //with this 
     unset($form['revision_information']);
@@ -184,7 +183,7 @@ function ding_wiki_form_wiki_page_node_form_alter(&$form, &$form_state) {
  * Implementation of hook_form_ID_alter().
  */
 function ding_wiki_form_node_access_page_alter(&$form, &$form_state) {
-  //Make Access control lists collapsed by default. They are seldom needed.
+  // Make access control lists collapsed by default. They are seldom needed.
   $form['nacl']['#collapsed'] = TRUE;
 }
 
@@ -205,7 +204,7 @@ function ding_wiki_ctools_plugin_directory($owner, $plugin_type) {
 
 /**
  * Returns whether a node is a wiki node.
- * 
+ *
  * Used as access callback.
  */
 function _ding_wiki_node_is_wiki($node) {
@@ -213,8 +212,8 @@ function _ding_wiki_node_is_wiki($node) {
 }
 
 /**
- * Determine whether a node has a menu link. 
- * 
+ * Determine whether a node has a menu link.
+ *
  * Used to determine pane visibility.
  */
 function _ding_wiki_in_menu($node) {
@@ -223,7 +222,7 @@ function _ding_wiki_in_menu($node) {
 
 /**
  * Determine the menu link id for the root wiki page.
- * 
+ *
  * We do not know what menu link id the wiki root panel will obtain
  * so we need to retrieve it for panel configuration at runtime.
  */
