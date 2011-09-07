@@ -1157,7 +1157,7 @@ function ding_wiki_views_default_views() {
   $handler->override_option('header', 'In the list you can see which wiki pages you have contributed to. A contribution can be creating a new page, editing an existing article, adding additional images or source material.');
   $handler->override_option('header_format', '1');
   $handler->override_option('header_empty', 0);
-  $handler->override_option('empty', 'Ingen blogindlæg fundet.');
+  $handler->override_option('empty', 'No wiki pages found.');
   $handler->override_option('empty_format', '1');
   $handler->override_option('use_pager', '0');
   $handler->override_option('use_more_text', 'Se alle indlæg');
