@@ -56,7 +56,7 @@ function theme_ding_wiki_formatter_thumbnail_description($element) {
   $class = "imagecache imagecache-$presetname imagecache-$style imagecache-{$element['#formatter']}";
   return '<div class="' . $class .'">' .
     theme('imagecache', $presetname, $item['filepath'], $item['data']['alt'], $item['data']['title'], array('class' => $class)) .
-    (($item['data']['description']) ? '<div class="description">' . $item['data']['description'] . '</div>' : '') .     
+    (($item['data']['title']) ? '<div class="description">' . $item['data']['title'] . '</div>' : '') .
   '</div>';
 }
 
@@ -76,9 +76,9 @@ function theme_ding_wiki_formatter_thumbnail_link_description($element) {
   $imagetag = theme('imagecache', $presetname, $item['filepath'], $item['data']['alt'], $item['data']['title']);
   $path = file_create_url($item['filepath']);
   $class = "imagecache imagecache-$presetname imagecache-$style imagecache-{$element['#formatter']}";
-  
-  return '<div class="' . $class .'">' .  
+
+  return '<div class="' . $class .'">' .
     l($imagetag, $path, array('attributes' => array('class' => $class), 'html' => TRUE)) .
-    (($item['data']['description']) ? '<div class="description">' . $item['data']['description'] . '</div>' : '') .     
+    (($item['data']['description']) ? '<div class="description"><h2>' . $item['data']['title'] . '</h2><div>' . $item['data']['description'] . '</div></div>' : '') .
   '</div>';
 }

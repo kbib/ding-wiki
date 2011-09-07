@@ -308,7 +308,7 @@ function ding_wiki_content_default_fields() {
       'alt' => '',
       'custom_alt' => 0,
       'title' => '',
-      'custom_title' => 0,
+      'custom_title' => 1,
       'title_type' => 'textfield',
       'default_image' => NULL,
       'use_default_image' => 0,

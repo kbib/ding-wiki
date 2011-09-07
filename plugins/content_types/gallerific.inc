@@ -13,7 +13,6 @@ function ding_wiki_gallerific_content_type_render($subtype, $conf, $panel_args) 
   $block->title = '';
   $block->content = '<div class="ding-wiki-gallery-images"></div>
 										<div class="ding-wiki-gallery-caption">
-											<h2>' . t('Image description') . '</h2>
 										</div>';
   return $block;
 }

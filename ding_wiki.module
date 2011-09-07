@@ -197,6 +197,29 @@ function ding_wiki_form_comment_form_alter(&$form, &$form_state) {
 }
 
 /**
+ * Implementation of hook_elements().
+ */
+function ding_wiki_elements() {
+  $elements = array();
+
+  // Add another process function to imagefield widgets
+  $elements['imagefield_widget'] = array(
+    '#process' => array('ding_wiki_imagefield_widget_process'),
+  );
+  return $elements;
+}
+
+function ding_wiki_imagefield_widget_process($element, $edit, &$form_state, $form) {
+  // Images on wiki pages should show the title field first
+  // and no description.
+  if ($element['#type_name'] == 'wiki_page') {
+    $element['data']['title']['#weight'] = -1;
+    unset($element['data']['title']['#description']);
+  }
+  return $element;
+}
+
+/**
  * Implementation of hook_ctools_plugin_directory().
  */
 function ding_wiki_ctools_plugin_directory($owner, $plugin_type) {
