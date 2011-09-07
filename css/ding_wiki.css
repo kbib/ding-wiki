@@ -109,6 +109,7 @@ dsdsaadda
 .ding-wiki-gallery .ding-wiki-carousel .controls { padding: 0 25px 0 0 ;text-align: right; }
 .ding-wiki-gallery .pane-gallerific { margin: 0 0 40px; }
 .ding-wiki-gallery .pane-gallerific img{ width: 100%; }
+.ding-wiki-gallery .tabs { overflow: hidden; }
 
 /* User wiki dashboard */
 .pane-wiki_revisions_list-panel_pane_1 table { width: 100%; }
