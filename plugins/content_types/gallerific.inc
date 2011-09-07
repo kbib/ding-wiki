@@ -25,7 +25,7 @@ function ding_wiki_gallerific_content_type_edit_form(&$form, &$form_state) {
 }
 
 /**
- * Returns the administrative title for the content type. 
+ * Returns the administrative title for the content type.
  */
 function ding_wiki_gallerific_content_type_admin_title($subtype, $conf) {
   return t('Wiki gallerific content');

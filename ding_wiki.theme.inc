@@ -24,15 +24,15 @@ function theme_ding_wiki_formatter_mixed($element) {
   // We use a static variable to keep track of how many times we have rendered a node field
   static $items;
   if (!$items) {
-    $items = array();    
+    $items = array();
   }
-  
+
   // Generate a key for the variable based on node and field name.
   // NB: This will mess things up if the same node and the same field is rendered
   // multiple times on the same page
   $key = md5(serialize(array($element['#fieldname'], $element['#node'])));
   if (!isset($items[$key])) {
-    $items[$key] = 1;    
+    $items[$key] = 1;
     return theme('ting_reference_formatter_default', $element);
   } else {
     $items[$key]++; //Increment the value to keep track of how many times it has been used for good measure
@@ -54,7 +54,7 @@ function theme_ding_wiki_formatter_thumbnail_description($element) {
   $item['data']['title'] = isset($item['data']['title']) ? $item['data']['title'] : NULL;
 
   $class = "imagecache imagecache-$presetname imagecache-$style imagecache-{$element['#formatter']}";
-  return '<div class="' . $class .'">' .  
+  return '<div class="' . $class .'">' .
     theme('imagecache', $presetname, $item['filepath'], $item['data']['alt'], $item['data']['title'], array('class' => $class)) .
     (($item['data']['description']) ? '<div class="description">' . $item['data']['description'] . '</div>' : '') .     
   '</div>';
