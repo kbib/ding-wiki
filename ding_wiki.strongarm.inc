@@ -105,7 +105,7 @@ function ding_wiki_strongarm() {
   $strongarm->name = 'content_extra_weights_wiki_page';
   $strongarm->value = array(
     'title' => '-5',
-    'body_field' => '-1',
+    'body_field' => '-2',
     'revision_information' => '5',
     'author' => '4',
     'options' => '6',

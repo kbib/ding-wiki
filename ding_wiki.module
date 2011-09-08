@@ -176,8 +176,25 @@ function ding_wiki_form_wiki_page_node_form_alter(&$form, &$form_state) {
     unset($form['body_field']['teaser_js']);
     unset($form['body_field']['teaser_include']);
 
-    unset($form['body_field']['format']);
+    $form['#after_build'][] = '_ding_wiki_remove_formats';
   }
+}
+
+/**
+ * Remove body formatter elements from a form. Inspired by better_formats.
+ *
+ * @see better_formats_filter_form().
+ */
+function _ding_wiki_remove_formats($form, &$form_state) {
+  // Remove the formatting guidelines
+  $form['body_field']['format']['format']['guidelines']['#value'] = '';
+
+  // Remove the more formatting information link. It should be the last child
+  // in the format array.
+  $more_info_key = array_pop(element_children($form['body_field']['format']));
+  $form['body_field']['format'][$more_info_key]['#value'] = '';
+
+  return $form;
 }
 
 /**
