@@ -41,11 +41,11 @@
       endif;
     endforeach;
     print theme('item_list', $items);
-  ?>
+    ?>
 
-  <?php if (!$page && !$wiki_gallery) : ?>
+  <?php if (!wiki_page && !$wiki_gallery) : ?>
     <div class="more">
-     <?php print l(t('See the wiki page'), 'node/' . $node->nid) ?>  
+     <?php print l(t('See the wiki page'), 'node/' . $node->nid) ?>
     </div>
   <?php elseif (!$wiki_gallery) : ?>
   <div class="more">

@@ -8,12 +8,6 @@
 .node-wiki_page .content .item-list { margin-left: 0; }
 .node-wiki_page .content .field h3 { font-size: 100%; font-weight: bold; line-height: normal; }
 
-.field-wiki-images .more { margin: 0 0 30px; padding: 5px 0 0; text-align: right; }
-.field-wiki-images .more,
-.field-wiki-images .more *,
-#content .field-wiki-images .more a:hover { background: #FFF; }
-
-
 /* Wiki images carousel */
 
 .node-type-wiki-page .ding-wiki-carousel { background: none; padding-top: 0; }
@@ -40,6 +34,12 @@
   .ding-wiki-carousel .field-wiki-images .jcarousel-prev-disabled-horizontal,
   .ding-wiki-carousel .field-wiki-images .jcarousel-prev-disabled-horizontal:hover,
   .ding-wiki-carousel .field-wiki-images .jcarousel-prev-disabled-horizontal:active {cursor: default; background-position: -105px 0;}
+
+/* More text */
+.field-wiki-images .more { margin: 0 0 30px; padding: 5px 0 0; text-align: right; }
+/* Use a solid white background to hide any repeating images */
+.node-type-wiki-page .field-wiki-images .more,
+.node-type-wiki-page .field-wiki-images .more * { background-color: #FFF; }
 
 /* Wiki references */
 .wiki-page-field-ting-refs li { padding: 5px 0; }
@@ -76,7 +76,7 @@ body .wiki-page-field-ting-refs ul li { margin: 0px; }
 
 /* Make sure we do not mess around with the WYSIWYG editor */
 #ding-wiki-page-form .mceEditor table { width: auto; }
-dsdsaadda
+
 /* Form buttons */
 #ding-wiki-page-form .form-submit { cursor: pointer; padding: 2px 10px; color: #333; text-align: center; font-weight: normal; } 
 /* Create a gradient */
@@ -99,7 +99,7 @@ dsdsaadda
 .ding-wiki-carousel .field-wiki-images .jcarousel-container { background: none; padding-bottom: none; } 
 
 .pane-field_wiki_images h3 { font-size: 100%; font-weight: bold; }
-.pane-field_wiki_images .more { margin: 5px 0; text-align: right; }
+.pane-field_wiki_images .more { padding: 5px 0; text-align: right; }
 .pane-field_wiki_images h3,
 .pane-field_wiki_images .more { padding: 0 25px; }
 

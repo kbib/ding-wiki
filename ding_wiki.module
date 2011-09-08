@@ -125,7 +125,17 @@ function ding_wiki_preprocess_content_field(&$vars) {
   $vars['node_type_css'] = str_replace('_', '-', $vars['node']->type);
 
   // Pass along information whether this is a gallery subpage for a wiki node
-  $vars['wiki_gallery'] = (strrpos($_GET['q'], 'wiki_gallery') !== FALSE);
+  if ($vars['node_type'] == 'wiki_page') {
+    $vars['wiki_gallery'] = (arg(2) == 'wiki_gallery') !== FALSE;
+
+    // Determine if we are on a wiki node page
+    // Ugly - is there a better way to achieve this?
+    $vars['wiki_page'] = FALSE;
+    if ((arg(0) == 'node') && is_int(arg(1)) && !arg(2)) {
+      $node = node_load(arg(1));
+      $vars['wiki_page'] = $node->type == 'wiki_page';
+    }
+  }
 }
 
 /**
