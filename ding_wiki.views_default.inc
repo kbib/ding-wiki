@@ -1215,8 +1215,8 @@ function ding_wiki_views_default_views() {
       ),
       'relationship' => 'none',
     ),
-    'created' => array(
-      'label' => 'Date',
+    'changed' => array(
+      'label' => 'Dato',
       'alter' => array(
         'alter_text' => 0,
         'text' => '',
@@ -1241,9 +1241,9 @@ function ding_wiki_views_default_views() {
       'date_format' => 'small',
       'custom_date_format' => 'j. F Y',
       'exclude' => 0,
-      'id' => 'created',
+      'id' => 'changed',
       'table' => 'node',
-      'field' => 'created',
+      'field' => 'changed',
       'override' => array(
         'button' => 'Use default',
       ),
