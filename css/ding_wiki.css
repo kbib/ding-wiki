@@ -103,6 +103,9 @@ body .wiki-page-field-ting-refs ul li { margin: 0px; }
 .pane-field_wiki_images h3,
 .pane-field_wiki_images .more { padding: 0 25px; }
 
+/* Wiki revisions page */
+body.node-type-wiki-page .pane-node_revisions table { width: 100%; }
+
 /* Wiki gallery subpages */
 .ding-wiki-gallery .panel-threecol-left-stacked-right .panel-middle { padding-right: 25px; width: 445px; }
 .ding-wiki-gallery .ding-wiki-carousel .count { float: left; padding: 0 0 0 25px; }
