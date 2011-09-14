@@ -335,7 +335,7 @@ function ding_wiki_default_page_manager_handlers() {
     $pane->configuration = array(
       'admin_title' => 'Revisions description',
       'title' => '',
-      'body' => 'In the list you can see who has contributed to this wiki page. A contribution can be creating a new page, editing an existing article, adding additional images or source material.',
+      'body' => t('In the list you can see who has contributed to this wiki page. A contribution can be creating a new page, editing an existing article, adding additional images or source material.'),
       'format' => '1',
       'substitute' => 0,
     );
