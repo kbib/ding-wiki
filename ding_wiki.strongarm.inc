@@ -30,10 +30,9 @@ function ding_wiki_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'better_formats_allowed_wiki_page';
-  // We do not know what id the wiki content format will be created with so we store and retrieve it 
-  // using a variable set in ding_wiki_setup_filters() using install and updates.
-  // Do not edit this!
-  $strongarm->value = variable_get('ding_wiki_node_input_format', NULL);
+  $strongarm->value = array(
+    0 => 4,
+  );
 
   $export['better_formats_allowed_wiki_page'] = $strongarm;
   $strongarm = new stdClass;
@@ -263,11 +262,7 @@ function ding_wiki_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_wiki_page';
-  $strongarm->value = array(
-    0 => 'admin',
-    1 => 'devel',
-    2 => 'features',
-  );
+  $strongarm->value = array();
 
   $export['menu_wiki_page'] = $strongarm;
   $strongarm = new stdClass;
@@ -275,18 +270,14 @@ function ding_wiki_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_access_settings';
   $strongarm->value = array(
-    'per_node' => '1',
+    'per_node' => 1,
     'priority' => '10',
     'view' => array(
-      0 => '1',
-      1 => '2',
+      1 => 1,
+      2 => 2,
     ),
-    'update' => array(
-      0 => '2',
-    ),
-    'delete' => array(
-      0 => '2',
-    ),
+    'update' => array(),
+    'delete' => array(),
   );
 
   $export['node_access_settings'] = $strongarm;
