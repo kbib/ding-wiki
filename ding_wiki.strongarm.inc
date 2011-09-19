@@ -276,8 +276,15 @@ function ding_wiki_strongarm() {
       1 => 1,
       2 => 2,
     ),
-    'update' => array(),
-    'delete' => array(),
+    'update' => array(
+      3 => 3,
+      4 => 4,
+      5 => 5,
+    ),
+    'delete' => array(
+      3 => 3,
+      5 => 5,
+    ),
   );
 
   $export['node_access_settings'] = $strongarm;
