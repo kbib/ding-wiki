@@ -1,14 +1,16 @@
 Drupal.behaviors.dingWikiCarousel = function(context) {
-  if (jQuery.jcarousel) {
-    $('.ding-wiki-carousel .field-wiki-images ul').jcarousel({
-      vertical: false, //
-      scroll: 3, //amount of items to scroll by
-      animation: "fast", // slow - fast
-      auto: "0", //autoscroll in seconds
-      wrap: "last"
-    });
+  if($('.ding-wiki-carousel .field-wiki-images ul li').length > 1) {
+    if (jQuery.jcarousel) {
+      $('.ding-wiki-carousel .field-wiki-images ul').jcarousel({
+        vertical: false, //
+        scroll: 3, //amount of items to scroll by
+        animation: "fast", // slow - fast
+        auto: "0", //autoscroll in seconds
+        wrap: "last"
+      });
+    }
   }
-}
+};
 
 Drupal.behaviors.dingWikiGallery = function(context) {
   var gallery = $('body:not(.page-admin) .ding-wiki-gallery-thumbs .field-wiki-images');
@@ -43,7 +45,7 @@ Drupal.behaviors.dingWikiGallery = function(context) {
         onSlideChange:             Drupal.dingWiki.updateCount
     });
   }
-}
+};
 
 Drupal.dingWiki = {
 
@@ -51,4 +53,4 @@ Drupal.dingWiki = {
     $('.ding-wiki-gallery-thumbs').find('.count em:first').text(newIndex + 1);  
   }
 
-}
+};
