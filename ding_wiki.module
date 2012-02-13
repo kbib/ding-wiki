@@ -4,6 +4,15 @@
  * Implementation of hook_init().
  */
 function ding_wiki_init() {
+
+  /**
+   * REVIEW: Maybe the styling and JS should only be add to wiki pages. Could it
+   *         be add to a preprocess function ?
+   *
+   *         Could gallerific be include in the gallerific.inc under content
+   *         type render ?
+   */
+
   //Add our own stylesheet
   drupal_add_css(drupal_get_path('module', 'ding_wiki') . '/css/ding_wiki.css');
 
@@ -22,6 +31,10 @@ function ding_wiki_init() {
     //Use default theme when adding types or edit
     $use_custom_theme = (arg(0) == 'node' && arg(1) == 'add' && in_array(arg(2), $custom_form_types));
 
+    /**
+     * REVIEW: Maybe use == and not in_array below, when only one form type is 
+     *         used.
+     */
     if (!$use_custom_theme && (arg(0) == 'node' && arg(2) == 'edit')) {
       $node = node_load(arg(1));
       $use_custom_theme = in_array($node->type, $custom_form_types);
@@ -37,6 +50,9 @@ function ding_wiki_init() {
 
 /**
  * Implementation of hook_menu().
+ *
+ * REVIEW: Creates a short-cut to creating wiki pages on a wiki page in the
+ *         page tabs.
  */
 function ding_wiki_menu() {
   $items = array();
@@ -69,6 +85,10 @@ function ding_wiki_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
         l(t('Home'), '<front>'),
       );
 
+      /**
+       * REVIEW: The module/feature does not create the "wiki" page, which makes
+       *         the link in the trail a 404 not found.
+       */
       $trail[] = l(t('Wiki'), 'wiki');
 
       $trail[] = l($node->title, 'node/' . $node->nid);
@@ -120,6 +140,11 @@ function ding_wiki_theme_registry_alter(&$theme_registry) {
   }
 }
 
+/**
+ * REVIEW: Missing description.
+ *
+ * @param type $vars
+ */
 function ding_wiki_preprocess_content_field(&$vars) {
   $vars['node_type'] = $vars['node']->type;
   $vars['node_type_css'] = str_replace('_', '-', $vars['node']->type);
@@ -127,6 +152,16 @@ function ding_wiki_preprocess_content_field(&$vars) {
   // Pass along information whether this is a gallery subpage for a wiki node
   if ($vars['node_type'] == 'wiki_page') {
     $vars['wiki_gallery'] = (arg(2) == 'wiki_gallery') !== FALSE;
+
+    /**
+     * REVIEW: I don't follow this one. If $vars['node_type] is a wiki page, why
+     *         do you need to do the suff below. The code below is only true if
+     *         the url is node/<nid> and not node/<nid>/wiki_gallery.
+     *
+     *         So if $vars['node_type] is a wiki page, will the code below not
+     *         always result in wiki_page = TRUE. If not we should use a SQL
+     *         select as the node load is expensive.
+     */
 
     // Determine if we are on a wiki node page
     // Ugly - is there a better way to achieve this?
@@ -186,12 +221,18 @@ function ding_wiki_form_wiki_page_node_form_alter(&$form, &$form_state) {
     unset($form['body_field']['teaser_js']);
     unset($form['body_field']['teaser_include']);
 
+    /**
+     * REVIEW: See comment at _ding_wiki_remove_formats.
+     */
     $form['#after_build'][] = '_ding_wiki_remove_formats';
   }
 }
 
 /**
  * Remove body formatter elements from a form. Inspired by better_formats.
+ *
+ * REVIEW: Better formats is part of the std. ding build. So could't we use
+ *         that module for this ?
  *
  * @see better_formats_filter_form().
  */
@@ -236,9 +277,12 @@ function ding_wiki_elements() {
   return $elements;
 }
 
+/**
+ * REVIEW: Missing description.         
+ */
 function ding_wiki_imagefield_widget_process($element, $edit, &$form_state, $form) {
   // Images on wiki pages should show the title field first
-  // and no description.
+  // and have no description of the title field.
   if ($element['#type_name'] == 'wiki_page') {
     $element['data']['title']['#weight'] = -1;
     unset($element['data']['title']['#description']);

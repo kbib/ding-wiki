@@ -34,14 +34,18 @@
   <?php endif;?>
 
   <ul>
-    <?php foreach ($items as $delta => &$item) :
+    <?php
+      /**
+       * REVIEW: I'm not sure what happens here and why ?
+       */
+      foreach ($items as $delta => &$item) :
         if ($item['empty']) :
           unset($items[$delta]);
         else :
           $item = $item['view'];
         endif;
       endforeach;
-      // Ting reference field content is already formatted as lis so we can just output them  
+      // Ting reference field content is already formatted as lists so we can just output them
       print implode('', $items);
     ?>
   </ul>

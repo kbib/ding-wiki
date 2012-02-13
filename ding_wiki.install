@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * REVIEW: Are the id's used in the install process safe across ding site. I'm
+ *         thinking about the 'vid' in vocabulary_node_types and roles id's in
+ *         ding_wiki_setup_input_formats().
+ */
+
+/**
  * Implementation of hook_install().
  */
 function ding_wiki_install() {
