@@ -1,6 +1,10 @@
 <?php
 
 /**
+ * REVIEW: Missing  @file
+ */
+
+/**
  * Implementation of hook_page_manager_tasks().
  * 
  * This is used as using a $plugin variable doesn't seem to work.
@@ -18,6 +22,10 @@ function ding_wiki_node_revisions_page_manager_tasks() {
 	  'admin description' => t('When enabled, this overrides the default Drupal behavior for the revisions page at <em>/node/%node/revsions</em>.'),
 	  'admin path' => 'node/%node/revisions',
 
+    /**
+     * REVIEW: What is samvirke_quiz mentioned below ?
+     */
+      
 	  // Menu hooks so that we can alter the default entry
 	  // samvirke_quiz is the name of the module; take is the name of the task.
 	  //   (this is arbitrary and the name-structure is a convention
@@ -35,6 +43,9 @@ function ding_wiki_node_revisions_page_manager_tasks() {
 	);
 }
 
+/**
+ * REVIEW: Missing description.
+ */
 function ding_wiki_node_revisions_menu_alter(&$items, $task) {
   // the enable/disable callback will set a variable to control whether the panel is enabled.
   if (variable_get('ding_wiki_node_revisions_disabled', TRUE)) {
@@ -42,6 +53,9 @@ function ding_wiki_node_revisions_menu_alter(&$items, $task) {
     return;
   }
 
+  /**
+   * REVIEW: The comment below does not make sens ?
+   */
   // Check whether the callbacks at node/%node/take match those
   // provided by the take module.  If not, then the URL has been overridden already.
   $page_callback = $items['node/%node/revisions']['page callback'];
@@ -49,7 +63,7 @@ function ding_wiki_node_revisions_menu_alter(&$items, $task) {
 
   //Diff module also overrides node/%node/revisions
   $known_callbacks = array('node_revision_overview', 'diff_diffs_overview');
-  $is_using_default = (in_array($page_callback, $known_callbacks)  && $page_arguments == array(1));
+  $is_using_default = (in_array($page_callback, $known_callbacks) && $page_arguments == array(1));
 
   // check that it either matches the callback provided by take,
   // or if not, it's already been overridden by another module, so check
@@ -62,6 +76,10 @@ function ding_wiki_node_revisions_menu_alter(&$items, $task) {
     // disable the panel page
     variable_set('ding_wiki_node_revisions_disabled', TRUE);
     // the enable-function sets a global, so the message is only displayed when trying to enable the panel, not on every cache-clear.
+
+    /**
+     * REVIEW: Drupal code normally use the global keyword and not the array.
+     */
     if (!empty($GLOBALS['ding_wiki_node_enabling_revisions'])) {
       drupal_set_message(t('ding_wiki module is unable to enable the revisions panel page because some other module already has overridden with %callback.', array('%callback' => $page_callback)), 'warning');
     }
@@ -69,15 +87,24 @@ function ding_wiki_node_revisions_menu_alter(&$items, $task) {
   }
 }
 
+/**
+ * REVIEW: Missing description.
+ */
 function ding_wiki_node_revisions_enable($cache, $status) {
   variable_set('ding_wiki_node_revisions_disabled', $status);
   // Set a global flag so that the menu routine knows it needs
   // to set a message if enabling cannot be done.
   if (!$status) {
+    /**
+     * REVIEW: Drupal code normally use the global keyword and not the array.
+     */
     $GLOBALS['ding_wiki_node_enabling_revisions'] = TRUE;
   }
 }
 
+/**
+ * REVIEW: Missing description.
+ */
 function ding_wiki_node_revisions_get_arguments($task, $subtask_id) {
   return array(
     array(
@@ -98,6 +125,9 @@ function ding_wiki_node_revisions_get_contexts($task, $subtask_id) {
 }
 
 /**
+ * REVIEW: Function description metions "take" and might need rewriting.
+ *
+ *
  * Entry point for our overridden take URL.
  *
  * This function asks its assigned handlers who, if anyone, would like
@@ -118,6 +148,12 @@ function ding_wiki_node_revisions_page($node) {
   if ($output !== FALSE) {
     return $output;
   }
+
+  /**
+   * REVIEW: The code below makes an extra module_load_include, which makes an
+   *         include_once. From a performance view it would be faster with and
+   *         else statement.
+   */
 
   // fallback to the default take handler:
 	$function = 'node_revision_overview';
