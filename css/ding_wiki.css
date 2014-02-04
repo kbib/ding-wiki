@@ -1,3 +1,8 @@
+/**
+ * REVIEW: __minor fix__ is that 0 value units should be without "px".
+ *
+ **/
+
 /* We actually use tabs here so hide all displays except the panels pane one */
 .node-type-wiki-page .tabs { display: none; }
 .node-type-wiki-page  .pane-page_tabs { overflow: hidden; }
@@ -17,6 +22,9 @@
 
 .ding-wiki-carousel .field-wiki-images .jcarousel-container { padding: 5px 15px 12px; }
 .ding-wiki-carousel .field-wiki-images .jcarousel-container .jcarousel-item { width: 138px; max-height: 120px; height: auto; margin: 0; padding: 0; list-style: none outside; }
+/** 
+ * REVIEW: Don't use universel selectors (*) and > > is not valied css
+ **/
 .ding-wiki-carousel .field-wiki-images .jcarousel-container .jcarousel-item > * { display: block; padding: 0 10px; }
 .ding-wiki-carousel .field-wiki-images .jcarousel-container .jcarousel-item > > * { display: block; margin: 0; }
 .ding-wiki-carousel .field-wiki-images .jcarousel-container .jcarousel-item img { display: block; margin: 0; }
@@ -50,6 +58,9 @@ body .wiki-page-field-ting-refs ul li { margin: 0px; }
 
 /* Wiki terms */
 .ding-wiki-terms-pane ol { padding: 0 20px; }
+/** 
+ * REVIEW: Margin and display inline can't be used together... if the element is not floated (IE6 bug fix)
+ **/
 .ding-wiki-terms-pane li { display: inline; margin: 0px 10px 0px 0px; padding: 0px 10px 0px 0px; list-style-type: none; border-right: 1px solid; }
 .ding-wiki-terms-pane .last,
 .ding-wiki-terms-pane .views-row-last { border-right: 0px none; }  

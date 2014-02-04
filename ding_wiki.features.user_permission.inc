@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * REVIEW: Missing permissons for editing/viewing wiki image fields. Which is
+ *         defined by this module, hence have not permissions set :-)
+ */
+
+/**
  * Implementation of hook_user_default_permissions().
  */
 function ding_wiki_user_default_permissions() {

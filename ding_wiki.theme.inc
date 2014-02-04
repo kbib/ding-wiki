@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * REVIEW: Missing file and function documentation.
+ */
+
 function template_preprocess_ding_wiki_formatter_text($vars) {
   $collection = _ting_reference_get_collection($vars['element']['#item']['ting_ref_type'], $vars['element']['#item']['ting_object_id'], $vars['element']['#item']['description']);
   if ($collection) {

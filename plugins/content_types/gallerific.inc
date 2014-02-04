@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * REVIEW: File description and some documentation is missing.
+ */
+
 $plugin = array(
   'title' => t('Wiki gallerific content'),
   'single' => TRUE,

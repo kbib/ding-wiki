@@ -1,3 +1,8 @@
+
+/**
+ * REVIEW: Missing documentation and file description.
+ */
+
 Drupal.behaviors.dingWikiCarousel = function(context) {
   if($('.ding-wiki-carousel .field-wiki-images ul li').length > 1) {
     if (jQuery.jcarousel) {

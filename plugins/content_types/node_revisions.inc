@@ -24,6 +24,12 @@ function ding_wiki_node_revisions_content_type_render($subtype, $conf, $panel_ar
   // Load the node
 	$node = node_load($panel_args[0]);
 
+  /**
+   * REVIEW: The code below makes an extra module_load_include, which makes an
+   *         include_once. From a performance view it would be faster with and
+   *         else statement.
+   */
+
 	// If the Diff module is enabled then we show the diff overview. Otherwise we
 	// fall back to basic node revisions
 	$content_function = 'node_revision_overview';
